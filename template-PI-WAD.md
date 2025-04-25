@@ -2,9 +2,9 @@
 
 **_Os trechos em itálico servem apenas como guia para o preenchimento da seção. Por esse motivo, não devem fazer parte da documentação final._**
 
-## Nome do Projeto
+## Inteli Planner
 
-#### Autor do projeto
+#### [Pedro Jorge Alves Soares](https://www.linkedin.com/in/pedro-jorge-alves/)
 
 ## Sumário
 
