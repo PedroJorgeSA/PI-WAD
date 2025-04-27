@@ -18,8 +18,11 @@
 
 ## <a name="c1"></a>1. Introdução (Semana 01)
 
-*Preencha com até 300 palavras – sem necessidade de fonte.*
-*Descreva brevemente o sistema que você irá desenvolver.*
+  &nbsp;&nbsp;&nbsp;&nbsp;A organização pessoal e acadêmica é um desafio constante para os alunos do Inteli, especialmente diante da grande quantidade de tarefas, eventos e oportunidades que surgem ao longo da jornada universitária. Visando atender a essa necessidade, propõe-se o desenvolvimento de um sistema baseado na opção um, que atuará como gerenciador de tarefas e itens a serem concluídos. A escolha dessa opção se justifica pela identificação de uma demanda crescente entre os estudantes do inteli por ferramentas que facilitem a gestão de suas atividades acadêmicas, pessoais e extracurriculares.
+ 
+ &nbsp;&nbsp;&nbsp;&nbsp;Ao longo do percurso acadêmico, os alunos do Inteli se deparam com inúmeras oportunidades de participação em projetos, eventos, programas de capacitação e atividades extracurriculares, além de suas responsabilidades acadêmicas regulares. No entanto, o grande volume de atividades pode dificultar a organização eficiente do tempo e das tarefas, comprometendo o desempenho e o aproveitamento dessas oportunidades.
+
+ &nbsp;&nbsp;&nbsp;&nbsp;Com base nesse cenário, é essencial oferecer uma solução que permita aos estudantes monitorar seus compromissos de maneira prática e centralizada. Para solucionar esse problema o Inteli Planner nasce para atender essa necessidade, foi idealizado para atender essa demanda, proporcionando uma plataforma simples, intuitiva e eficiente. Através dele, os alunos poderão registrar, acompanhar e priorizar suas atividades, promovendo uma gestão pessoal mais organizada e favorecendo o desenvolvimento acadêmico e profissional.
 
 ---
 
