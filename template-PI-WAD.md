@@ -34,29 +34,29 @@
 
 ### 2.2. User Stories (Semana 01)
 
-US01 | Como estudante de engenharia de software, quero adicionar e organizar minhas tarefas em categorias (acadêmico, pessoal, extracurricular), para que eu visualize facilmente minhas prioridades.
-I – Independente: Não necessita de nenhuma outra função para funcionar.
-N – Negociável: As categorias podem ser alteradas.
-V – Valiosa: A organição é a base para o alto desempenho nos estudos.
-E – Estimável: É possível estimar o esforço de desenvolvimento de organização simples.
-S – Pequena: A funcionalidade pode ser implementada em partes pequenas, como criando uma task teste para separar algumas categorias.
-T – Testável: Pode ser testada checando se o planner organiza em categorias.
+#### US01 | Como estudante de engenharia de software, quero adicionar e organizar minhas tarefas em categorias (acadêmico, pessoal, extracurricular), para que eu visualize facilmente minhas prioridades.
+- **I – Independente**: Não necessita de nenhuma outra função para funcionar.
+- **N – Negociável**: As categorias podem ser alteradas.
+- **V – Valiosa**: A organização é a base para o alto desempenho nos estudos.
+- **E – Estimável**: É possível estimar o esforço de desenvolvimento de organização simples.
+- **S – Pequena**: A funcionalidade pode ser implementada em partes pequenas, como criando uma task teste para separar algumas categorias.
+- **T – Testável**: Pode ser testada checando se o planner organiza em categorias.
 
-US02 | Como estudante de engenharia de software, quero receber lembretes de prazos importantes, para que eu não perca entregas de trabalhos e provas.
-I – Independente: Pode ser desenvolvida separadamente das outras funções.
-N – Negociável: O formato e o tipo de lembrete (notificação push, e-mail ou dentro do proprio app) podem ser discutidos com o usuário.
-V – Valiosa: Evitar a perda de prazos é altamente relevante para os estudantes, aumentando seu desempenho acadêmico.
-E – Estimável: É possível estimar o esforço de desenvolvimento de um sistema de notificações simples.
-S – Pequena: A funcionalidade pode ser implementada em partes pequenas .
-T – Testável: Pode ser testada checando se o sistema envia alertas na hora certa para as tarefas cadastradas.
+#### US02 | Como estudante de engenharia de software, quero receber lembretes de prazos importantes, para que eu não perca entregas de trabalhos e provas.
+- **I – Independente**: Pode ser desenvolvida separadamente das outras funções.
+- **N – Negociável**: O formato e o tipo de lembrete (notificação push, e-mail ou dentro do próprio app) podem ser discutidos com o usuário.
+- **V – Valiosa**: Evitar a perda de prazos é altamente relevante para os estudantes, aumentando seu desempenho acadêmico.
+- **E – Estimável**: É possível estimar o esforço de desenvolvimento de um sistema de notificações simples.
+- **S – Pequena**: A funcionalidade pode ser implementada em partes pequenas.
+- **T – Testável**: Pode ser testada checando se o sistema envia alertas na hora certa para as tarefas cadastradas.
 
-US03 | Como estudante de engenharia de software, quero visualizar todas as minhas tarefas em uma única tela de forma intuitiva, para que eu não me confunda usando várias ferramentas diferentes.
-I – Independente: Não necessita de nenhuma outra função para funcionar.
-N – Negociável: Os detalhes da tela (layout e exibição das tarefas) podem ser ajustados.
-V – Valiosa: Centralizar tarefas em uma única tela aumenta a produtividade e facilita o gerenciamento.
-E – Estimável: É possível estimar o esforço de desenvolvimento para criar a tela e integrar as tarefas.
-S – Pequena: Pode ser dividida em partes pequenas, como a implementação da interface ou a organização de tarefas por categorias.
-T – Testável: Pode ser testada verificando se todas as tarefas são exibidas corretamente em uma única tela.
+#### US03 | Como estudante de engenharia de software, quero visualizar todas as minhas tarefas em uma única tela de forma intuitiva, para que eu não me confunda usando várias ferramentas diferentes.
+- **I – Independente**: Não necessita de nenhuma outra função para funcionar.
+- **N – Negociável**: Os detalhes da tela (layout e exibição das tarefas) podem ser ajustados.
+- **V – Valiosa**: Centralizar tarefas em uma única tela aumenta a produtividade e facilita o gerenciamento.
+- **E – Estimável**: É possível estimar o esforço de desenvolvimento para criar a tela e integrar as tarefas.
+- **S – Pequena**: Pode ser dividida em partes pequenas, como a implementação da interface ou a organização de tarefas por categorias.
+- **T – Testável**: Pode ser testada verificando se todas as tarefas são exibidas corretamente em uma única tela.
 
 ---
 
