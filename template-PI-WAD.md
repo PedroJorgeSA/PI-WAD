@@ -30,7 +30,7 @@
 
 ### 2.1. Personas (Semana 01)
 
-*Posicione aqui sua(s) Persona(s) em forma de texto markdown com imagens, ou como imagem de template preenchido. Atualize esta seção ao longo do módulo se necessário.*
+![Persona 1](/assets/personGeorge.png)
 
 ### 2.2. User Stories (Semana 01)
 
