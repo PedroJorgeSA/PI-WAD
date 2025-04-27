@@ -30,7 +30,7 @@
 
 ### 2.1. Personas (Semana 01)
 
-![Persona 1](/assets/personGeorge.png)
+![Persona 1](/Assets/personaGeorge.png)
 
 ### 2.2. User Stories (Semana 01)
 
