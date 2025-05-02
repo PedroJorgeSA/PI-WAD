@@ -63,6 +63,15 @@
 ## <a name="c3"></a>3. Projeto da Aplicação Web
 
 ### 3.1. Modelagem do banco de dados  (Semana 3)
+ &nbsp;&nbsp;&nbsp;&nbsp; O sistema desenvolvido é um gerenciador de tarefas que exige o planejamento e estruturação de um banco de dados relacional. O modelo lógico define as entidades principais envolvidas: usuários (users), tarefas (tasks) e categorias (categories).
+
+ &nbsp;&nbsp;&nbsp;&nbsp; A tabela users armazena as informações dos usuários do sistema, contendo os campos id (chave primária, identificador único), name (nome do usuário), email (com valor único), e password (senha de acesso). A tabela categories define categorias para organização das tarefas e contém os campos id (chave primária) e name (nome da categoria). Já a tabela tasks registra as tarefas criadas pelos usuários e possui os campos id (chave primária), title (título da tarefa), description (descrição detalhada), status (estado da tarefa, como "pendente" ou "concluída"), user_id (chave estrangeira referenciando o usuário que criou a tarefa) e category_id (chave estrangeira que vincula a tarefa a uma categoria específica).
+
+ &nbsp;&nbsp;&nbsp;&nbsp; Os relacionamentos entre as tabelas são os seguintes: um usuário pode ter várias tarefas (relação 1:N entre users e tasks), e uma categoria pode ser associada a várias tarefas (relação 1:N entre categories e tasks).
+
+![Diagrama Lógico](/Assets/diagramaLogico.png)
+
+ &nbsp;&nbsp;&nbsp;&nbsp; O modelo físico, escrito em SQL, reflete essa estrutura lógica e define a criação das tabelas com seus respectivos campos e relacionamentos. Abaixo está o código para criação do banco de dados:
 
 *Posicione aqui os diagramas de modelos relacionais do seu banco de dados, apresentando todos os esquemas de tabelas e suas relações. Utilize texto para complementar suas explicações, se necessário.*
 
