@@ -9,6 +9,7 @@ Este projeto é um gerenciador de tarefas desenvolvido para auxiliar alunos do I
 
 ## Estrutura do projeto
 
+```sql
 PI-WAD/
 │
 ├── Assets/                # Arquivos visuais e imagens auxiliares (ex: diagramas, personas)
@@ -50,7 +51,7 @@ PI-WAD/
 ├── jest.config.js         # Configuração de testes com Jest
 ├── package.json           # Dependências e scripts do Node.js
 ├── package-lock.json      # Lockfile do npm
-
+````
 
 ## Instalação
 
