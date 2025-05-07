@@ -4,8 +4,8 @@ Este projeto é um gerenciador de tarefas desenvolvido para auxiliar alunos do I
 
 ## Requisitos
 
-- Node.js (versão X.X.X)
-- PostgreSQL (versão X.X.X)
+- Node.js (versão v22.13.1)
+- PostgreSQL (versão v22.13.1)
 
 ## Estrutura do projeto
 
