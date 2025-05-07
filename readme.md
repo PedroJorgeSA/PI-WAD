@@ -32,6 +32,7 @@ PI-WAD/
 ├── routes/                # Definição das rotas do sistema
 │   ├── frontRoutes.js     # Rotas voltadas ao frontend (se aplicável)
 │   └── userRoutes.js      # Rotas relacionadas aos usuários
+│   └── index.js            
 │
 ├── scripts/               # Scripts de inicialização e execução auxiliar
 │   ├── init.sql
@@ -47,7 +48,7 @@ PI-WAD/
 │   └── userService.test.js
 │
 ├── views/                 # (Reservado para templates ou frontend, se necessário)
-│
+├── .env                   # Variáveis de ambiente
 ├── jest.config.js         # Configuração de testes com Jest
 ├── package.json           # Dependências e scripts do Node.js
 ├── package-lock.json      # Lockfile do npm
