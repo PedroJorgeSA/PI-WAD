@@ -121,6 +121,7 @@ CREATE TABLE tasks (
 
 ## Wireframe Overview
 ![](/Assets/wireframeOverview.png)
+Link do Figma: https://www.figma.com/design/nyBG3BN34QiR5m7vYCwkzQ/Untitled?node-id=21-1038&t=J8OvyttrHo3GjWH7-1
 
 #### Tela: minhas tarefas
 A tela "Minhas Tarefas" foi desenvolvida com base na User Story US01. Seu objetivo é permitir que o usuário visualize rapidamente suas atividades organizadas por categoria. O wireframe apresenta três seções distintas: Acadêmico, Pessoal e Extracurricular.
