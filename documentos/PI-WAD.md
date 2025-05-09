@@ -119,7 +119,34 @@ CREATE TABLE tasks (
 
 ### 3.3. Wireframes (Semana 03)
 
-*Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização).*
+## Wireframe Overview
+![](/Assets/wireframeOverview.png)
+
+#### Tela: minhas tarefas
+A tela "Minhas Tarefas" foi desenvolvida com base na User Story US01. Seu objetivo é permitir que o usuário visualize rapidamente suas atividades organizadas por categoria. O wireframe apresenta três seções distintas: Acadêmico, Pessoal e Extracurricular.
+
+**Funcionalidades principais:**
+1. Cards resumidos de tarefas: cada tarefa é exibida em um card com as seguintes informações: título, breve descrição e um ícone de checkbox para indicar o status de conclusão da atividade.
+2. Botão de criação de tarefa: posicionado de forma central e com ícone intuitivo, esse botão redireciona o usuário para a tela de criação de novas tarefas.
+
+#### Criar tarefa
+Essa tela é uma extensão direta da User Story US01 e foi projetada para facilitar o registro de novas atividades de forma rápida e organizada.
+1. Campos de informação para preencher a tasks, como título, descrição, data, e categoria.
+2. Botão Salvar ao finalizar o preenchimento, o usuário pode salvar a tarefa e retornar à tela principal.
+
+#### Meus lembretes
+A tela de lembretes e notificações foi construída com base na User Story US02, que visa facilitar o acompanhamento de prazos importantes.
+**Funcionalidades:**
+1. Lista de lembretes organizados por data: cada lembrete exibe a tarefa associada e o tempo restante para o vencimento.
+2. Botões de ação rápida: o usuário pode editar, ignorar ou marcar o lembrete como concluído diretamente na interface.
+
+#### Todas as suas tarefas
+A tela de visão geral reúne todas as tarefas do usuário em um único local, proporcionando uma navegação prática e organizada. Além disso, também possui a exibição unificada de todas as tarefas cadastradas, independentemente da categoria (acadêmica, pessoal ou extracurricular).
+
+**Funcionalidades principais:**
+1. Opção de editar ou excluir a task que esta na coluna.
+
+
 
 ### 3.4. Guia de estilos (Semana 05)
 
