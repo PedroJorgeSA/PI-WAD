@@ -149,8 +149,66 @@ A tela de visão geral reúne todas as tarefas do usuário em um único local, p
 
 
 ### 3.4. Guia de estilos (Semana 05)
+O atual guia de estilo do projeto se propõe ser simples e prátioa para utilização, com inspiração na criação de componentes com estilo NeoBrustalista, o design final e as decisões tomadas reforçam a prioridade por uma interface limpa e prática para gerenciar as tarefas 
 
-*Descreva aqui orientações gerais para o leitor sobre como utilizar os componentes do guia de estilos de sua solução.*
+## Cores
+![](/Assets/Cores.png)
+A identidade visual do Inteli Planner opta uma paleta vibrante e contrastante. As cores foram escolhidas para garantir visibilidade, hierarquia clara e impacto visual direto, priorizando interfaces objetivas e funcionais para a gestão de tarefas.
+
+#### 1. Cor Principal:Purple (#E300F8)
+
+Uma cor vibrante, energética e altamente contrastante, que assume o papel central na identidade visual. Utilizada em elementos-chave da interface como botões de ação primária, destaques e chamadas visuais. Evoca modernidade e ousadia, sem comprometer a legibilidade quando usada sobre fundo claro.
+
+#### 2. Cor de Composição 01 — Strong Orange (#F84E00)
+
+Um laranja intenso e quente, utilizado para composições gráficas, alertas ou reforços visuais. Essa cor cria um forte contraste com o roxo principal, ajudando a direcionar a atenção do usuário para informações complementares ou secundárias de alta prioridade. É utilizado dentro das telas como identificação das atividades acadêmicas.
+
+#### 3. Cor de Composição 02 — Clean Blue (#009DF8)
+
+Na verdade, trata-se de um azul vibrante (e não verde como nomeado), que adiciona um tom frio à paleta, equilibrando as cores quentes e reforçando a diversidade de contrastes visuais. Ideal para ações secundárias, gráficos, ícones ou planos de fundo que requerem presença sem roubar o foco principal.
+Cores
+
+## Tipografia
+![](/Assets/Tipografia.png)
+
+Fonte Familly: Inter
+Uma fonte sem serifa (sans-serif) pensada especificamente para ambientes digitais. Otimizada para legibilidade em tamanhos variados, a Inter combina bem com a proposta de um layout funcional, direto e sem ruídos visuais.
+
+## Layout Geral
+![](/Assets/LayoutGeral.png)
+
+A estrutura do layout do projeto foi desenhada com base em sistemas modulares de grade e espaçamento previsível, favorecendo a construção de uma interface limpa, consistente e escalável.
+
+Margens
+As margens laterais são amplas e bem definidas, garantindo respiro visual e separação clara entre o conteúdo e a borda da interface. Isso melhora a legibilidade e evita sobrecarga de informação, favorecendo o foco do usuário nas tarefas.
+
+Espaçamento Padrão
+O espaçamento entre os elementos é uniforme e funcional, aplicado de forma previsível entre campos de formulário, botões e componentes. Esse ritmo visual reforça a legibilidade e facilita a escalabilidade do sistema de design.
+
+Colunas
+O sistema de colunas segue uma grade modular (possivelmente de 12 colunas), que oferece flexibilidade na organização do conteúdo e permite reuso de componentes com alinhamento consistente. As colunas sustentam a responsividade e garantem adaptação fluida a diferentes tamanhos de tela.
+
+Grids
+As linhas-guia horizontais e verticais organizam os elementos com precisão. Elas servem como base para cards, listas, seções e módulos interativos. O uso rigoroso de grids garante consistência visual e facilita a implementação técnica do layout.
+
+## Botões
+![](/Assets/botões.png)
+
+Os botões seguem a identidade visual do sistema, com destaque para a cor principal e variações que garantem flexibilidade de uso em diferentes contextos da interface. O estilo é direto, com formas retangulares, bordas levemente arredondadas e preenchimento sólido.
+
+Tamanhos
+Os botões estão disponíveis em diferentes tamanhos para se adequar à hierarquia visual e ao espaço disponível nos componentes da interface. Independentemente do tamanho, todos mantêm a mesma tipografia e contraste.
+
+## Assets
+![](/Assets/Assets.png)
+
+A biblioteca de assets reúne elementos gráficos reutilizáveis, como cards e ícones, desenhados com linhas simples e estrutura funcional. A estética segue o estilo NeoBrutalista, com contornos evidentes e aplicação direta das cores do sistema.
+
+Cards
+Os cards utilizam cores da paleta principal para delimitar visualmente seções ou informações agrupadas. Possuem bordas definidas e estrutura limpa para facilitar a leitura e organização de conteúdo.
+
+Ícones
+Os ícones são simples, de traço único e alinhados com o estilo visual do restante da interface. São utilizados para representar ações (como adicionar, confirmar, listar, editar) de forma clara e acessível.
 
 
 ### 3.5. Protótipo de alta fidelidade (Semana 05)
