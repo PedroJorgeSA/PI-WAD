@@ -192,7 +192,7 @@ Grids
 As linhas-guia horizontais e verticais organizam os elementos com precisão. Elas servem como base para cards, listas, seções e módulos interativos. O uso rigoroso de grids garante consistência visual e facilita a implementação técnica do layout.
 
 ## Botões
-![](/Assets/botoes.png)
+![](/Assets/Botoes.png)
 
 Os botões seguem a identidade visual do sistema, com destaque para a cor principal e variações que garantem flexibilidade de uso em diferentes contextos da interface. O estilo é direto, com formas retangulares, bordas levemente arredondadas e preenchimento sólido.
 
@@ -210,10 +210,13 @@ Os cards utilizam cores da paleta principal para delimitar visualmente seções 
 Ícones
 Os ícones são simples, de traço único e alinhados com o estilo visual do restante da interface. São utilizados para representar ações (como adicionar, confirmar, listar, editar) de forma clara e acessível.
 
-
 ### 3.5. Protótipo de alta fidelidade (Semana 05)
 
-*Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
+![](/Assets/FluxoFigma.png)
+
+A tela final tem um proposito de criar um fluxo de navegação fluido e intuitivo, guiando o usuário desde o login até o gerenciamento completo de tarefas e lembretes. Com uma interface limpa, uso estratégico das cores da paleta e elementos do estilo NeoBrutalista, a prototipação demonstra consistência visual e funcional, reforçando a proposta de uma experiência prática e organizada para o usuário final.
+
+*Link do Figma: https://www.figma.com/design/nyBG3BN34QiR5m7vYCwkzQ/Untitled?node-id=21-1038&t=J8OvyttrHo3GjWH7-1*
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
