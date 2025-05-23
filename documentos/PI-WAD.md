@@ -192,7 +192,7 @@ Grids
 As linhas-guia horizontais e verticais organizam os elementos com precisão. Elas servem como base para cards, listas, seções e módulos interativos. O uso rigoroso de grids garante consistência visual e facilita a implementação técnica do layout.
 
 ## Botões
-![](/Assets/botões.png)
+![](/Assets/botoes.png)
 
 Os botões seguem a identidade visual do sistema, com destaque para a cor principal e variações que garantem flexibilidade de uso em diferentes contextos da interface. O estilo é direto, com formas retangulares, bordas levemente arredondadas e preenchimento sólido.
 
