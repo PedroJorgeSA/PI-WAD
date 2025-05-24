@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteli Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Inteli Planner</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Bem-vindo ao Inteli Planner</h1>
+        <p>Gerencie suas tarefas de forma eficiente!</p>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Minhas Tarefas</h5>
+                        <div id="tarefas-lista">
+                            Carregando tarefas...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Nova Tarefa</h5>
+                        <form id="nova-tarefa-form">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label">Descrição</label>
+                                <textarea class="form-control" id="descricao" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Criar Tarefa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para carregar tarefas
+        async function carregarTarefas() {
+            try {
+                const response = await fetch('/api/tarefas');
+                const tarefas = await response.json();
+                const listaTarefas = document.getElementById('tarefas-lista');
+                
+                if (tarefas.length === 0) {
+                    listaTarefas.innerHTML = '<p>Nenhuma tarefa encontrada.</p>';
+                    return;
+                }
+
+                listaTarefas.innerHTML = '<ul class="list-group">' + 
+                    tarefas.map(tarefa => `
+                        <li class="list-group-item">
+                            <h6>${tarefa.title}</h6>
+                            <p class="mb-0">${tarefa.description || 'Sem descrição'}</p>
+                            <small class="text-muted">Status: ${tarefa.status}</small>
+                            <div class="mt-2">
+                                <button class="btn btn-sm btn-danger" onclick="deletarTarefa(${tarefa.id})">Excluir</button>
+                                <button class="btn btn-sm btn-warning" onclick="editarTarefa(${tarefa.id})">Editar</button>
+                            </div>
+                        </li>
+                    `).join('') + 
+                    '</ul>';
+            } catch (error) {
+                console.error('Erro ao carregar tarefas:', error);
+                document.getElementById('tarefas-lista').innerHTML = 
+                    '<p class="text-danger">Erro ao carregar tarefas.</p>';
+            }
+        }
+
+        // Função para criar nova tarefa
+        document.getElementById('nova-tarefa-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('nome').value;
+            const description = document.getElementById('descricao').value;
+
+            try {
+                const response = await fetch('/api/tarefas', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ nome: title, descricao: description })
+                });
+
+                if (response.ok) {
+                    document.getElementById('nome').value = '';
+                    document.getElementById('descricao').value = '';
+                    carregarTarefas();
+                } else {
+                    const error = await response.json();
+                    alert(error.error || 'Erro ao criar tarefa');
+                }
+            } catch (error) {
+                console.error('Erro ao criar tarefa:', error);
+                alert('Erro ao criar tarefa');
+            }
+        });
+
+        // Função para deletar tarefa
+        async function deletarTarefa(id) {
+            if (!confirm('Tem certeza que deseja excluir esta tarefa?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/tarefas/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    carregarTarefas();
+                } else {
+                    const error = await response.json();
+                    alert(error.message || 'Erro ao excluir tarefa');
+                }
+            } catch (error) {
+                console.error('Erro ao excluir tarefa:', error);
+                alert('Erro ao excluir tarefa');
+            }
+        }
+
+        // Função para editar tarefa
+        async function editarTarefa(id) {
+            const novoTitulo = prompt('Digite o novo título da tarefa:');
+            if (!novoTitulo) return;
+
+            const novaDescricao = prompt('Digite a nova descrição da tarefa:');
+            const novoStatus = prompt('Digite o novo status da tarefa (pendente, em_andamento, concluida):') || 'pendente';
+
+            try {
+                const response = await fetch(`/api/tarefas/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nome: novoTitulo,
+                        descricao: novaDescricao,
+                        status: novoStatus
+                    })
+                });
+
+                if (response.ok) {
+                    carregarTarefas();
+                } else {
+                    const error = await response.json();
+                    alert(error.message || 'Erro ao atualizar tarefa');
+                }
+            } catch (error) {
+                console.error('Erro ao atualizar tarefa:', error);
+                alert('Erro ao atualizar tarefa');
+            }
+        }
+
+        // Carregar tarefas ao iniciar
+        carregarTarefas();
+    </script>
+</body>
+</html> 
