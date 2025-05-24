@@ -6,22 +6,54 @@ Este é um sistema de gerenciamento de tarefas desenvolvido com Node.js, Express
 
 ```
 PI-WAD/
-├── config/             # Configurações do projeto
-│   └── db.js          # Configuração do banco de dados
-├── controllers/        # Controladores da aplicação
-│   └── TarefaController.js
-├── models/            # Models da aplicação
-│   ├── Task.js
-│   ├── User.js
-│   └── Category.js
-├── routes/            # Rotas da aplicação
-│   └── index.js
-├── scripts/           # Scripts úteis
-│   └── init.sql       # Script de inicialização do banco
+├── Assets/                # Arquivos visuais e recursos do projeto
+│   ├── diagramaLogico.png # Diagrama do banco de dados
+│   └── personaGeorge.png  # Imagens de personas
+│
+├── config/               # Configurações do projeto
+│   └── db.js            # Configuração da conexão com o banco de dados
+│
+├── controllers/          # Controladores da aplicação (Camada Controller)
+│   ├── TaskController.js # Controlador de tarefas
+│   ├── UserController.js # Controlador de usuários
+│   └── CategoryController.js # Controlador de categorias
+│
+├── documentos/           # Documentação do projeto
+│   ├── PI-WAD.md        # Documentação principal
+│   └── modeloFisico.sql # Script do modelo físico do banco
+│
+├── models/              # Modelos da aplicação (Camada Model)
+│   ├── Task.js         # Modelo de tarefas
+│   ├── User.js         # Modelo de usuários
+│   └── Category.js     # Modelo de categorias
+│
+├── routes/              # Definição das rotas da API
+│   ├── taskRoutes.js   # Rotas de tarefas
+│   ├── userRoutes.js   # Rotas de usuários
+│   └── categoryRoutes.js # Rotas de categorias
+│
+├── scripts/            # Scripts utilitários
+│   ├── init.sql       # Inicialização do banco
+│   └── runSQLScript.js # Execução de scripts SQL
+│
+├── services/           # Camada de serviços
+│   ├── taskService.js  # Serviços de tarefas
+│   └── userService.js  # Serviços de usuários
+│
+├── tests/             # Testes automatizados
+│   ├── integration/   # Testes de integração
+│   └── unit/         # Testes unitários
+│
 ├── views/             # Views da aplicação (EJS)
-│   └── pages/
-│       └── index.ejs
-└── server.js          # Arquivo principal do servidor
+│   ├── layouts/      # Layouts base
+│   ├── partials/     # Componentes parciais
+│   └── pages/        # Páginas principais
+│
+├── server.js         # Arquivo principal do servidor
+├── jest.config.js    # Configuração dos testes
+├── package.json      # Dependências do projeto
+├── rest.http         # Arquivo de testes de API
+└── testConnection.js # Teste de conexão com banco
 ```
 
 ## Requisitos
@@ -73,7 +105,7 @@ PI-WAD/
 ├── jest.config.js         # Configuração de testes com Jest
 ├── package.json           # Dependências e scripts do Node.js
 ├── package-lock.json      # Lockfile do npm
-````
+```
 
 ## Instalação
 
