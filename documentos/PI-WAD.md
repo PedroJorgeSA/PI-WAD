@@ -103,16 +103,42 @@ CREATE TABLE tasks (
 ```
 
 ### 3.1.1 BD e Models (Semana 5)
-*Descreva aqui os Models implementados no sistema web*
+O sistema Inteli Planner possui três models principais que representam as entidades fundamentais do sistema:
+
+## User (Usuário)
+
+Este model gerencia todas as operações relacionadas aos usuários do sistema. Cada usuário possui um identificador único (id) que é gerado automaticamente como chave primária, um nome (name) para identificação pessoal, um email único que serve como identificador para login, e uma senha (password) que é armazenada de forma segura. O User model é fundamental para o sistema de autenticação e para relacionar tarefas específicas a seus respectivos usuários.
+
+## Task (Tarefa)
+O model Task é o núcleo do sistema de gerenciamento de tarefas. Cada tarefa possui um identificador único (id), um título (title) que descreve brevemente a tarefa, uma descrição (description) mais detalhada do que precisa ser feito, um status que indica o estado atual da tarefa (por exemplo: pendente, em andamento, concluída), e um timestamp de criação (created_at) que registra quando a tarefa foi criada. Além disso, cada tarefa está vinculada a um usuário específico através do campo user_id (chave estrangeira) e a uma categoria através do category_id (chave estrangeira), permitindo organização e filtragem eficientes das tarefas.
+
+## Category (Categoria)
+O Category model permite a organização e classificação das tarefas em grupos lógicos. Cada categoria possui um identificador único (id) e um nome (name) que descreve o tipo ou grupo de tarefas. Este model possibilita que os usuários organizem suas tarefas em diferentes contextos ou áreas, como "Trabalho", "Pessoal", "Estudos", etc.
+Os models implementam um relacionamento onde:
+Um usuário pode ter múltiplas tarefas (relação um-para-muitos entre User e Task)
+Uma categoria pode estar associada a múltiplas tarefas (relação um-para-muitos entre Category e Task)
+Cada tarefa pertence a exatamente um usuário e uma categoria (relação muitos-para-um com User e Category)
 
 ### 3.2. Arquitetura (Semana 5)
 
-*Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário.*
+![](/Assets/arquiteturaInteliPlanner.png)
 
-**Instruções para criação do diagrama de arquitetura**  
-- **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
-- **View**: A camada responsável pela interface de usuário.
-- **Controller**: A camada que recebe as requisições, processa as ações e atualiza o modelo e a visualização.
+Nossa implementação do MVC é fortalecida por camadas adicionais que garantem uma melhor organização e distribuição de responsabilidades:
+
+- **Models**: Representam as entidades do sistema e encapsulam a lógica de acesso aos dados
+- **Views**: Responsáveis pela interface do usuário, utilizando EJS para renderização dinâmica
+- **Controllers**: Coordenam as ações do usuário, processando requisições e gerenciando o fluxo de dados
+- **Services**: Implementam a lógica de negócio e regras específicas do domínio
+- **Routes**: Definem os endpoints da API e direcionam as requisições para os controllers apropriados
+- **Config**: Centraliza as configurações do sistema, como conexão com banco de dados
+- **Tests**: Garantem a qualidade e confiabilidade do código através de testes automatizados
+
+Esta arquitetura foi escolhida por sua clareza e eficiência, permitindo:
+- Manutenção simplificada através da separação clara de responsabilidades
+- Escalabilidade facilitada pela modularização dos componentes
+- Testabilidade aprimorada com componentes desacoplados
+- Reutilização de código através de uma estrutura bem organizada
+
   
 *Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View.*
 
