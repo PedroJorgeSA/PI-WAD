@@ -195,6 +195,145 @@ Para executar os testes:
 npm test
 ```
 
+# Inteli Planner - Sistema de Gerenciamento de Tarefas
+
+## Descrição
+
+Sistema de gerenciamento de tarefas desenvolvido para auxiliar alunos do **Inteli** na organização de suas atividades acadêmicas, pessoais e extracurriculares.  
+O sistema permite **criar, editar, listar e excluir tarefas**, além de categorizá-las e associá-las a usuários.
+
+- **Arquitetura**: MVC (Model-View-Controller)  
+- **Ferramenta de Diagramação**: Draw.io
+
+---
+
+## Modelos (Models)
+
+### Entidades e Atributos:
+
+#### Task (Tarefa)
+- `id` (SERIAL PRIMARY KEY)  
+- `title` (VARCHAR)  
+- `description` (TEXT)  
+- `status` (VARCHAR)  
+- `created_at` (TIMESTAMP)  
+- `updated_at` (TIMESTAMP)  
+- `user_id` (INTEGER FK)  
+- `category_id` (INTEGER FK)  
+
+#### User (Usuário)
+- `id` (SERIAL PRIMARY KEY)  
+- `name` (VARCHAR)  
+- `email` (VARCHAR UNIQUE)  
+- `password` (VARCHAR)  
+
+#### Category (Categoria)
+- `id` (SERIAL PRIMARY KEY)  
+- `name` (VARCHAR)  
+
+### Relações:
+- Uma tarefa pertence a um usuário (N:1)  
+- Uma tarefa pertence a uma categoria (N:1)  
+- Um usuário pode ter várias tarefas (1:N)  
+- Uma categoria pode ter várias tarefas (1:N)  
+
+---
+
+## Controladores (Controllers)
+
+### 1. TarefaController
+**Responsabilidades**: Gerenciar operações CRUD de tarefas  
+**Métodos**:
+- `criarTarefa(req, res)`: Cria nova tarefa  
+- `listarTarefas(req, res)`: Lista todas as tarefas  
+- `buscarTarefa(req, res)`: Busca tarefa por ID  
+- `editarTarefa(req, res)`: Atualiza tarefa existente  
+- `excluirTarefa(req, res)`: Remove tarefa  
+
+### 2. UserController
+**Responsabilidades**: Gerenciar operações de usuários  
+**Métodos**:
+- `getAllUsers(req, res)`: Lista todos usuários  
+- `getUserById(req, res)`: Busca usuário por ID  
+- `createUser(req, res)`: Cria novo usuário  
+- `updateUser(req, res)`: Atualiza usuário  
+- `deleteUser(req, res)`: Remove usuário  
+
+---
+
+## Interação MVC
+
+- Controllers recebem requisições HTTP  
+- Utilizam Models para operações no banco  
+- Retornam dados para Views via `res.json()` ou `res.render()`  
+
+---
+
+## Views (Views)
+
+### Páginas Principais:
+- `index.ejs`  
+  - Lista de tarefas  
+  - Formulário de criação  
+  - Interface de edição/exclusão  
+
+### Componentes:
+- Navegação (navbar)  
+- Cards de tarefas  
+- Formulários  
+- Mensagens de feedback  
+
+---
+
+## Infraestrutura
+
+### Componentes:
+
+#### Banco de Dados:
+- **PostgreSQL**  
+- Conexão via `node-postgres (pg)`  
+- Variáveis de ambiente para configuração  
+
+#### Servidor:
+- **Node.js**  
+- **Express.js**  
+- **EJS** como template engine  
+
+### Dependências Principais:
+- `express`: Framework web  
+- `pg`: Cliente PostgreSQL  
+- `dotenv`: Configuração de ambiente  
+- `cors`: Middleware CORS  
+- `body-parser`: Parser de requisições  
+
+---
+
+## Integração MVC
+
+- Models interagem diretamente com PostgreSQL  
+- Controllers processam lógica de negócios  
+- Views renderizam interface usando EJS  
+
+---
+
+## Implicações da Arquitetura
+
+### Escalabilidade:
+- Separação clara de responsabilidades  
+- Fácil adição de novos módulos  
+- Possibilidade de escalar componentes independentemente  
+
+### Manutenção:
+- Código organizado e modular  
+- Fácil identificação de problemas  
+- Alterações isoladas por camada  
+
+### Testabilidade:
+- Estrutura favorável para testes unitários  
+- Possibilidade de mock de componentes  
+- Testes independentes por camada  
+
+
 ## Contribuição
 
 1. Faça o fork do projeto
