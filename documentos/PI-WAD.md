@@ -73,7 +73,6 @@
 
  &nbsp;&nbsp;&nbsp;&nbsp; O modelo físico, escrito em SQL, reflete essa estrutura lógica e define a criação das tabelas com seus respectivos campos e relacionamentos. Abaixo está o código para criação do banco de dados:
 
-![Modelo Fisico](/documentos/modeloFisico.sql)
 
 ```sql
 -- Tabela USERS
@@ -119,16 +118,105 @@ CREATE TABLE tasks (
 
 ### 3.3. Wireframes (Semana 03)
 
-*Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização).*
+## Wireframe Overview
+![](/Assets/wireframeOverview.png)
+*Link do Figma: https://www.figma.com/design/nyBG3BN34QiR5m7vYCwkzQ/Untitled?node-id=21-1038&t=J8OvyttrHo3GjWH7-1*
+
+#### Tela: minhas tarefas
+A tela "Minhas Tarefas" foi desenvolvida com base na User Story US01. Seu objetivo é permitir que o usuário visualize rapidamente suas atividades organizadas por categoria. O wireframe apresenta três seções distintas: Acadêmico, Pessoal e Extracurricular.
+
+**Funcionalidades principais:**
+1. Cards resumidos de tarefas: cada tarefa é exibida em um card com as seguintes informações: título, breve descrição e um ícone de checkbox para indicar o status de conclusão da atividade.
+2. Botão de criação de tarefa: posicionado de forma central e com ícone intuitivo, esse botão redireciona o usuário para a tela de criação de novas tarefas.
+
+#### Criar tarefa
+Essa tela é uma extensão direta da User Story US01 e foi projetada para facilitar o registro de novas atividades de forma rápida e organizada.
+1. Campos de informação para preencher a tasks, como título, descrição, data, e categoria.
+2. Botão Salvar ao finalizar o preenchimento, o usuário pode salvar a tarefa e retornar à tela principal.
+
+#### Meus lembretes
+A tela de lembretes e notificações foi construída com base na User Story US02, que visa facilitar o acompanhamento de prazos importantes.
+**Funcionalidades:**
+1. Lista de lembretes organizados por data: cada lembrete exibe a tarefa associada e o tempo restante para o vencimento.
+2. Botões de ação rápida: o usuário pode editar, ignorar ou marcar o lembrete como concluído diretamente na interface.
+
+#### Todas as suas tarefas
+A tela de visão geral reúne todas as tarefas do usuário em um único local, proporcionando uma navegação prática e organizada. Além disso, também possui a exibição unificada de todas as tarefas cadastradas, independentemente da categoria (acadêmica, pessoal ou extracurricular).
+
+**Funcionalidades principais:**
+1. Opção de editar ou excluir a task que esta na coluna.
+
+
 
 ### 3.4. Guia de estilos (Semana 05)
+O atual guia de estilo do projeto se propõe ser simples e prátioa para utilização, com inspiração na criação de componentes com estilo NeoBrustalista, o design final e as decisões tomadas reforçam a prioridade por uma interface limpa e prática para gerenciar as tarefas 
 
-*Descreva aqui orientações gerais para o leitor sobre como utilizar os componentes do guia de estilos de sua solução.*
+## Cores
+![](/Assets/Cores.png)
+A identidade visual do Inteli Planner opta uma paleta vibrante e contrastante. As cores foram escolhidas para garantir visibilidade, hierarquia clara e impacto visual direto, priorizando interfaces objetivas e funcionais para a gestão de tarefas.
 
+#### 1. Cor Principal:Purple (#E300F8)
+
+Uma cor vibrante, energética e altamente contrastante, que assume o papel central na identidade visual. Utilizada em elementos-chave da interface como botões de ação primária, destaques e chamadas visuais. Evoca modernidade e ousadia, sem comprometer a legibilidade quando usada sobre fundo claro.
+
+#### 2. Cor de Composição 01 — Strong Orange (#F84E00)
+
+Um laranja intenso e quente, utilizado para composições gráficas, alertas ou reforços visuais. Essa cor cria um forte contraste com o roxo principal, ajudando a direcionar a atenção do usuário para informações complementares ou secundárias de alta prioridade. É utilizado dentro das telas como identificação das atividades acadêmicas.
+
+#### 3. Cor de Composição 02 — Clean Blue (#009DF8)
+
+Na verdade, trata-se de um azul vibrante (e não verde como nomeado), que adiciona um tom frio à paleta, equilibrando as cores quentes e reforçando a diversidade de contrastes visuais. Ideal para ações secundárias, gráficos, ícones ou planos de fundo que requerem presença sem roubar o foco principal.
+Cores
+
+## Tipografia
+![](/Assets/Tipografia.png)
+
+Fonte Familly: Inter
+Uma fonte sem serifa (sans-serif) pensada especificamente para ambientes digitais. Otimizada para legibilidade em tamanhos variados, a Inter combina bem com a proposta de um layout funcional, direto e sem ruídos visuais.
+
+## Layout Geral
+![](/Assets/LayoutGeral.png)
+
+A estrutura do layout do projeto foi desenhada com base em sistemas modulares de grade e espaçamento previsível, favorecendo a construção de uma interface limpa, consistente e escalável.
+
+Margens
+As margens laterais são amplas e bem definidas, garantindo respiro visual e separação clara entre o conteúdo e a borda da interface. Isso melhora a legibilidade e evita sobrecarga de informação, favorecendo o foco do usuário nas tarefas.
+
+Espaçamento Padrão
+O espaçamento entre os elementos é uniforme e funcional, aplicado de forma previsível entre campos de formulário, botões e componentes. Esse ritmo visual reforça a legibilidade e facilita a escalabilidade do sistema de design.
+
+Colunas
+O sistema de colunas segue uma grade modular (possivelmente de 12 colunas), que oferece flexibilidade na organização do conteúdo e permite reuso de componentes com alinhamento consistente. As colunas sustentam a responsividade e garantem adaptação fluida a diferentes tamanhos de tela.
+
+Grids
+As linhas-guia horizontais e verticais organizam os elementos com precisão. Elas servem como base para cards, listas, seções e módulos interativos. O uso rigoroso de grids garante consistência visual e facilita a implementação técnica do layout.
+
+## Botões
+![](/Assets/Botoes.png)
+
+Os botões seguem a identidade visual do sistema, com destaque para a cor principal e variações que garantem flexibilidade de uso em diferentes contextos da interface. O estilo é direto, com formas retangulares, bordas levemente arredondadas e preenchimento sólido.
+
+Tamanhos
+Os botões estão disponíveis em diferentes tamanhos para se adequar à hierarquia visual e ao espaço disponível nos componentes da interface. Independentemente do tamanho, todos mantêm a mesma tipografia e contraste.
+
+## Assets
+![](/Assets/Assets.png)
+
+A biblioteca de assets reúne elementos gráficos reutilizáveis, como cards e ícones, desenhados com linhas simples e estrutura funcional. A estética segue o estilo NeoBrutalista, com contornos evidentes e aplicação direta das cores do sistema.
+
+Cards
+Os cards utilizam cores da paleta principal para delimitar visualmente seções ou informações agrupadas. Possuem bordas definidas e estrutura limpa para facilitar a leitura e organização de conteúdo.
+
+Ícones
+Os ícones são simples, de traço único e alinhados com o estilo visual do restante da interface. São utilizados para representar ações (como adicionar, confirmar, listar, editar) de forma clara e acessível.
 
 ### 3.5. Protótipo de alta fidelidade (Semana 05)
 
-*Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
+![](/Assets/FluxoFigma.png)
+
+A tela final tem um proposito de criar um fluxo de navegação fluido e intuitivo, guiando o usuário desde o login até o gerenciamento completo de tarefas e lembretes. Com uma interface limpa, uso estratégico das cores da paleta e elementos do estilo NeoBrutalista, a prototipação demonstra consistência visual e funcional, reforçando a proposta de uma experiência prática e organizada para o usuário final.
+
+*Link do Figma: https://www.figma.com/design/nyBG3BN34QiR5m7vYCwkzQ/Untitled?node-id=21-1038&t=J8OvyttrHo3GjWH7-1*
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 

@@ -26,14 +26,66 @@ PI-WAD/
 
 ## Requisitos
 
-- Node.js
-- PostgreSQL
-- npm ou yarn
+- Node.js (versão X.X.X)
+- PostgreSQL (versão X.X.X)
 
-## Configuração
+## Estrutura do projeto
 
-1. Clone o repositório
-2. Instale as dependências:
+```sql
+PI-WAD/
+│
+├── Assets/                # Arquivos visuais e imagens auxiliares (ex: diagramas, personas)
+│   ├── diagramaLogico.png
+│   └── personaGeorge.png
+│
+├── config/                # Arquivos de configuração do sistema
+│   └── db.js              # Configuração da conexão com o banco de dados
+│
+├── controllers/           # Lógica de controle das requisições (camada Controller)
+│   └── userController.js
+│
+├── documentos/            # Documentação e arquivos de banco
+│   ├── PI-WAD.md          # Documento principal do projeto
+│   └── modeloFisico.sql   # Script SQL com modelo físico do banco de dados
+│
+├── models/                # Definição dos modelos de dados (camada Model)
+│   └── userModel.js
+│
+├── routes/                # Definição das rotas do sistema
+│   ├── frontRoutes.js     # Rotas voltadas ao frontend (se aplicável)
+│   └── userRoutes.js      # Rotas relacionadas aos usuários
+│
+├── scripts/               # Scripts de inicialização e execução auxiliar
+│   ├── init.sql
+│   └── runSQLScript.js
+│
+├── services/              # Regras de negócio e serviços auxiliares
+│   └── userService.js
+│
+├── tests/                 # Testes automatizados (unitários e de integração)
+│   ├── userController.test.js
+│   ├── userModel.test.js
+│   ├── userRoutes.test.js
+│   └── userService.test.js
+│
+├── views/                 # (Reservado para templates ou frontend, se necessário)
+│
+├── jest.config.js         # Configuração de testes com Jest
+├── package.json           # Dependências e scripts do Node.js
+├── package-lock.json      # Lockfile do npm
+````
+
+## Instalação
+
+1. **Clonar o repositório:**
+
+```bash
+   git clone https://github.com/seu-usuario/seu-projeto.git](https://github.com/PedroJorgeSA/PI-WAD
+   cd PI-WAD
+```
+
+2. **Instalar as dependências:**
+    
 ```bash
 npm install
 ```
