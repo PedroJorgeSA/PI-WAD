@@ -112,14 +112,14 @@ PI-WAD/
 1. **Clonar o repositório:**
 
 ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git](https://github.com/PedroJorgeSA/PI-WAD
+   git clone https://github.com/PedroJorgeSA/PI-WAD
    cd PI-WAD
 ```
 
 2. **Instalar as dependências:**
     
 ```bash
-npm install
+npm install 
 ```
 
 3. Configure o arquivo `.env` na raiz do projeto:

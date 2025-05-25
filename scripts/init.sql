@@ -1,5 +1,5 @@
 -- Tabela USERS
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
     email VARCHAR(100) UNIQUE,
@@ -7,13 +7,13 @@ CREATE TABLE users (
 );
 
 -- Tabela CATEGORIES
-CREATE TABLE categories (
+CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50)
 );
 
 -- Tabela TASKS
-CREATE TABLE tasks (
+CREATE TABLE IF NOT EXISTS tasks (
     id SERIAL PRIMARY KEY,
     title VARCHAR(100),
     description TEXT,
