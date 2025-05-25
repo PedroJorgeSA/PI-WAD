@@ -18,7 +18,7 @@ class Task {
     }
 
     static async findAll() {
-        const query = 'SELECT * FROM tasks ORDER BY created_at DESC';
+        const query = 'SELECT * FROM tasks ORDER BY id DESC';
         
         try {
             const result = await db.query(query);
