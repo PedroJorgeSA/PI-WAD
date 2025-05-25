@@ -1,60 +1,6 @@
-# Inteli Planner - Sistema de Gerenciamento de Tarefas
+# Inteli Planner MVC em Node.js com PostgreSQL
 
-Este é um sistema de gerenciamento de tarefas desenvolvido com Node.js, Express e PostgreSQL, seguindo a arquitetura MVC.
-
-## Estrutura do Projeto
-
-```
-PI-WAD/
-├── Assets/                # Arquivos visuais e recursos do projeto
-│   ├── diagramaLogico.png # Diagrama do banco de dados
-│   └── personaGeorge.png  # Imagens de personas
-│
-├── config/               # Configurações do projeto
-│   └── db.js            # Configuração da conexão com o banco de dados
-│
-├── controllers/          # Controladores da aplicação (Camada Controller)
-│   ├── TaskController.js # Controlador de tarefas
-│   ├── UserController.js # Controlador de usuários
-│   └── CategoryController.js # Controlador de categorias
-│
-├── documentos/           # Documentação do projeto
-│   ├── PI-WAD.md        # Documentação principal
-│   └── modeloFisico.sql # Script do modelo físico do banco
-│
-├── models/              # Modelos da aplicação (Camada Model)
-│   ├── Task.js         # Modelo de tarefas
-│   ├── User.js         # Modelo de usuários
-│   └── Category.js     # Modelo de categorias
-│
-├── routes/              # Definição das rotas da API
-│   ├── taskRoutes.js   # Rotas de tarefas
-│   ├── userRoutes.js   # Rotas de usuários
-│   └── categoryRoutes.js # Rotas de categorias
-│
-├── scripts/            # Scripts utilitários
-│   ├── init.sql       # Inicialização do banco
-│   └── runSQLScript.js # Execução de scripts SQL
-│
-├── services/           # Camada de serviços
-│   ├── taskService.js  # Serviços de tarefas
-│   └── userService.js  # Serviços de usuários
-│
-├── tests/             # Testes automatizados
-│   ├── integration/   # Testes de integração
-│   └── unit/         # Testes unitários
-│
-├── views/             # Views da aplicação (EJS)
-│   ├── layouts/      # Layouts base
-│   ├── partials/     # Componentes parciais
-│   └── pages/        # Páginas principais
-│
-├── server.js         # Arquivo principal do servidor
-├── jest.config.js    # Configuração dos testes
-├── package.json      # Dependências do projeto
-├── rest.http         # Arquivo de testes de API
-└── testConnection.js # Teste de conexão com banco
-```
+Este projeto é um gerenciador de tarefas desenvolvido para auxiliar alunos do Inteli na organização de suas atividades acadêmicas, pessoais e extracurriculares, oferecendo uma plataforma simples e centralizada para registrar, acompanhar e priorizar compromissos.
 
 ## Requisitos
 
@@ -105,275 +51,79 @@ PI-WAD/
 ├── jest.config.js         # Configuração de testes com Jest
 ├── package.json           # Dependências e scripts do Node.js
 ├── package-lock.json      # Lockfile do npm
-```
+````
 
 ## Instalação
 
 1. **Clonar o repositório:**
 
 ```bash
-   git clone https://github.com/PedroJorgeSA/PI-WAD
+   git clone https://github.com/seu-usuario/seu-projeto.git](https://github.com/PedroJorgeSA/PI-WAD
    cd PI-WAD
 ```
 
 2. **Instalar as dependências:**
     
 ```bash
-npm install 
+npm install
 ```
+    
+3. **Configurar o arquivo `.env`:**
+    
+Renomeie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente necessárias, como as configurações do banco de dados PostgreSQL.
+    
 
-3. Configure o arquivo `.env` na raiz do projeto:
-```env
-DB_USER=seu_usuario
-DB_HOST=localhost
-DB_DATABASE=pi_wad
-DB_PASSWORD=sua_senha
-DB_PORT=5432
-DB_SSL=false
-```
+Configuração do Banco de Dados
+------------------------------
 
-4. Crie o banco de dados:
-```bash
-createdb pi_wad
-```
-
-5. Execute as migrações:
+1. **Criar banco de dados:**
+    
+    Crie um banco de dados PostgreSQL com o nome especificado no seu arquivo `.env`.
+    
+2. **Executar o script SQL de inicialização:**
+    
 ```bash
 npm run init-db
 ```
+    
+Isso criará a tabela `users` no seu banco de dados PostgreSQL com UUID como chave primária e inserirá alguns registros de exemplo.
+    
 
-## Executando o Projeto
+Funcionalidades
+---------------
 
-```bash
-npm start
-```
+* **Padrão MVC:** Estrutura organizada em Model, View e Controller.
+* **PostgreSQL:** Banco de dados relacional utilizado para persistência dos dados.
+* **UUID:** Utilização de UUID como chave primária na tabela `users`.
+* **Scripts com `nodemon`:** Utilização do `nodemon` para reiniciar automaticamente o servidor após alterações no código.
+* **Testes:** Inclui estrutura básica para testes automatizados.
 
-O servidor estará rodando em `http://localhost:3000`
+Scripts Disponíveis
+-------------------
 
-## API Endpoints
+* `npm start`: Inicia o servidor Node.js.
+* `npm run dev`: Inicia o servidor com `nodemon`, reiniciando automaticamente após alterações no código.
+* `npm run test`: Executa os testes automatizados.
+* `npm run test:coverage`: Executa os testes e gera um relatório de cobertura de código.
 
-### Tarefas
+Estrutura de Diretórios
+-----------------------
 
-#### GET /api/tarefas
-- Lista todas as tarefas
-- Resposta: Array de tarefas
+* **`config/`**: Configurações do banco de dados e outras configurações do projeto.
+* **`controllers/`**: Controladores da aplicação (lógica de negócio).
+* **`models/`**: Modelos da aplicação (definições de dados e interações com o banco de dados).
+* **`routes/`**: Rotas da aplicação.
+* **`tests/`**: Testes automatizados.
+* **`views/`**: Views da aplicação (se aplicável).
 
-#### POST /api/tarefas
-- Cria uma nova tarefa
-- Body:
-```json
-{
-    "nome": "Nome da tarefa",
-    "descricao": "Descrição da tarefa"
-}
-```
+Contribuição
+------------
 
-#### PUT /api/tarefas/:id
-- Atualiza uma tarefa existente
-- Body:
-```json
-{
-    "nome": "Nome atualizado",
-    "descricao": "Descrição atualizada",
-    "status": "em_andamento"
-}
-```
+Contribuições são bem-vindas! Sinta-se à vontade para abrir um issue ou enviar um pull request.
 
-#### DELETE /api/tarefas/:id
-- Remove uma tarefa
+Licença
+-------
 
-## Arquitetura MVC
+Este projeto está licenciado sob a Licença MIT.
 
-### Models
-- `Task.js`: Gerencia as operações de banco de dados relacionadas às tarefas
-- `User.js`: Gerencia as operações de banco de dados relacionadas aos usuários
-- `Category.js`: Gerencia as operações de banco de dados relacionadas às categorias
-
-### Views
-- Implementadas usando EJS
-- Interface responsiva com Bootstrap
-- Interação em tempo real com a API
-
-### Controllers
-- `TarefaController.js`: Gerencia a lógica de negócios das tarefas
-
-## Banco de Dados
-
-### Tabelas
-
-#### users
-- id (SERIAL PRIMARY KEY)
-- name (VARCHAR)
-- email (VARCHAR UNIQUE)
-- password (VARCHAR)
-
-#### categories
-- id (SERIAL PRIMARY KEY)
-- name (VARCHAR)
-
-#### tasks
-- id (SERIAL PRIMARY KEY)
-- title (VARCHAR)
-- description (TEXT)
-- status (VARCHAR)
-- created_at (TIMESTAMP)
-- user_id (INTEGER FK)
-- category_id (INTEGER FK)
-
-## Testes
-
-Para executar os testes:
-```bash
-npm test
-```
-
-# Inteli Planner - Sistema de Gerenciamento de Tarefas
-
-## Descrição
-
-Sistema de gerenciamento de tarefas desenvolvido para auxiliar alunos do **Inteli** na organização de suas atividades acadêmicas, pessoais e extracurriculares.  
-O sistema permite **criar, editar, listar e excluir tarefas**, além de categorizá-las e associá-las a usuários.
-
-- **Arquitetura**: MVC (Model-View-Controller)  
-- **Ferramenta de Diagramação**: Draw.io
-
----
-
-## Modelos (Models)
-
-### Entidades e Atributos:
-
-#### Task (Tarefa)
-- `id` (SERIAL PRIMARY KEY)  
-- `title` (VARCHAR)  
-- `description` (TEXT)  
-- `status` (VARCHAR)  
-- `created_at` (TIMESTAMP)  
-- `updated_at` (TIMESTAMP)  
-- `user_id` (INTEGER FK)  
-- `category_id` (INTEGER FK)  
-
-#### User (Usuário)
-- `id` (SERIAL PRIMARY KEY)  
-- `name` (VARCHAR)  
-- `email` (VARCHAR UNIQUE)  
-- `password` (VARCHAR)  
-
-#### Category (Categoria)
-- `id` (SERIAL PRIMARY KEY)  
-- `name` (VARCHAR)  
-
-### Relações:
-- Uma tarefa pertence a um usuário (N:1)  
-- Uma tarefa pertence a uma categoria (N:1)  
-- Um usuário pode ter várias tarefas (1:N)  
-- Uma categoria pode ter várias tarefas (1:N)  
-
----
-
-## Controladores (Controllers)
-
-### 1. TarefaController
-**Responsabilidades**: Gerenciar operações CRUD de tarefas  
-**Métodos**:
-- `criarTarefa(req, res)`: Cria nova tarefa  
-- `listarTarefas(req, res)`: Lista todas as tarefas  
-- `buscarTarefa(req, res)`: Busca tarefa por ID  
-- `editarTarefa(req, res)`: Atualiza tarefa existente  
-- `excluirTarefa(req, res)`: Remove tarefa  
-
-### 2. UserController
-**Responsabilidades**: Gerenciar operações de usuários  
-**Métodos**:
-- `getAllUsers(req, res)`: Lista todos usuários  
-- `getUserById(req, res)`: Busca usuário por ID  
-- `createUser(req, res)`: Cria novo usuário  
-- `updateUser(req, res)`: Atualiza usuário  
-- `deleteUser(req, res)`: Remove usuário  
-
----
-
-## Interação MVC
-
-- Controllers recebem requisições HTTP  
-- Utilizam Models para operações no banco  
-- Retornam dados para Views via `res.json()` ou `res.render()`  
-
----
-
-## Views (Views)
-
-### Páginas Principais:
-- `index.ejs`  
-  - Lista de tarefas  
-  - Formulário de criação  
-  - Interface de edição/exclusão  
-
-### Componentes:
-- Navegação (navbar)  
-- Cards de tarefas  
-- Formulários  
-- Mensagens de feedback  
-
----
-
-## Infraestrutura
-
-### Componentes:
-
-#### Banco de Dados:
-- **PostgreSQL**  
-- Conexão via `node-postgres (pg)`  
-- Variáveis de ambiente para configuração  
-
-#### Servidor:
-- **Node.js**  
-- **Express.js**  
-- **EJS** como template engine  
-
-### Dependências Principais:
-- `express`: Framework web  
-- `pg`: Cliente PostgreSQL  
-- `dotenv`: Configuração de ambiente  
-- `cors`: Middleware CORS  
-- `body-parser`: Parser de requisições  
-
----
-
-## Integração MVC
-
-- Models interagem diretamente com PostgreSQL  
-- Controllers processam lógica de negócios  
-- Views renderizam interface usando EJS  
-
----
-
-## Implicações da Arquitetura
-
-### Escalabilidade:
-- Separação clara de responsabilidades  
-- Fácil adição de novos módulos  
-- Possibilidade de escalar componentes independentemente  
-
-### Manutenção:
-- Código organizado e modular  
-- Fácil identificação de problemas  
-- Alterações isoladas por camada  
-
-### Testabilidade:
-- Estrutura favorável para testes unitários  
-- Possibilidade de mock de componentes  
-- Testes independentes por camada  
-
-
-## Contribuição
-
-1. Faça o fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
-
-## Licença
-
-Este projeto está sob a licença MIT.
+Este README.md fornece uma visão geral clara do boilerplate, incluindo instruções de instalação, configuração do banco de dados, funcionalidades principais, scripts disponíveis, estrutura de diretórios, como contribuir e informações de licença. Certifique-se de personalizar as seções com detalhes específicos do seu projeto conforme necessário.

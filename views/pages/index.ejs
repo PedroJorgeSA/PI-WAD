@@ -67,13 +67,8 @@
                 listaTarefas.innerHTML = '<ul class="list-group">' + 
                     tarefas.map(tarefa => `
                         <li class="list-group-item">
-                            <h6>${tarefa.title}</h6>
-                            <p class="mb-0">${tarefa.description || 'Sem descrição'}</p>
-                            <small class="text-muted">Status: ${tarefa.status}</small>
-                            <div class="mt-2">
-                                <button class="btn btn-sm btn-danger" onclick="deletarTarefa(${tarefa.id})">Excluir</button>
-                                <button class="btn btn-sm btn-warning" onclick="editarTarefa(${tarefa.id})">Editar</button>
-                            </div>
+                            <h6>${tarefa.nome}</h6>
+                            <p class="mb-0">${tarefa.descricao || 'Sem descrição'}</p>
                         </li>
                     `).join('') + 
                     '</ul>';
@@ -88,8 +83,8 @@
         document.getElementById('nova-tarefa-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const title = document.getElementById('nome').value;
-            const description = document.getElementById('descricao').value;
+            const nome = document.getElementById('nome').value;
+            const descricao = document.getElementById('descricao').value;
 
             try {
                 const response = await fetch('/api/tarefas', {
@@ -97,7 +92,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ nome: title, descricao: description })
+                    body: JSON.stringify({ nome, descricao })
                 });
 
                 if (response.ok) {
@@ -105,70 +100,13 @@
                     document.getElementById('descricao').value = '';
                     carregarTarefas();
                 } else {
-                    const error = await response.json();
-                    alert(error.error || 'Erro ao criar tarefa');
+                    alert('Erro ao criar tarefa');
                 }
             } catch (error) {
                 console.error('Erro ao criar tarefa:', error);
                 alert('Erro ao criar tarefa');
             }
         });
-
-        // Função para deletar tarefa
-        async function deletarTarefa(id) {
-            if (!confirm('Tem certeza que deseja excluir esta tarefa?')) {
-                return;
-            }
-
-            try {
-                const response = await fetch(`/api/tarefas/${id}`, {
-                    method: 'DELETE'
-                });
-
-                if (response.ok) {
-                    carregarTarefas();
-                } else {
-                    const error = await response.json();
-                    alert(error.message || 'Erro ao excluir tarefa');
-                }
-            } catch (error) {
-                console.error('Erro ao excluir tarefa:', error);
-                alert('Erro ao excluir tarefa');
-            }
-        }
-
-        // Função para editar tarefa
-        async function editarTarefa(id) {
-            const novoTitulo = prompt('Digite o novo título da tarefa:');
-            if (!novoTitulo) return;
-
-            const novaDescricao = prompt('Digite a nova descrição da tarefa:');
-            const novoStatus = prompt('Digite o novo status da tarefa (pendente, em_andamento, concluida):') || 'pendente';
-
-            try {
-                const response = await fetch(`/api/tarefas/${id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        nome: novoTitulo,
-                        descricao: novaDescricao,
-                        status: novoStatus
-                    })
-                });
-
-                if (response.ok) {
-                    carregarTarefas();
-                } else {
-                    const error = await response.json();
-                    alert(error.message || 'Erro ao atualizar tarefa');
-                }
-            } catch (error) {
-                console.error('Erro ao atualizar tarefa:', error);
-                alert('Erro ao atualizar tarefa');
-            }
-        }
 
         // Carregar tarefas ao iniciar
         carregarTarefas();
