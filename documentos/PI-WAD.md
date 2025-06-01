@@ -246,7 +246,32 @@ A tela final tem um proposito de criar um fluxo de navegação fluido e intuitiv
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
-*Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema.*  
+### Tarefas
+
+#### GET /api/tarefas
+- Lista todas as tarefas
+- Resposta: Array de tarefas
+
+#### POST /api/tarefas
+- Cria uma nova tarefa
+- Body:
+```json
+{
+    "nome": "Nome da tarefa",
+    "descricao": "Descrição da tarefa"
+}
+```
+
+#### PUT /api/tarefas/:id
+- Atualiza uma tarefa existente
+- Body:
+```json
+{
+    "nome": "Nome atualizado",
+    "descricao": "Descrição atualizada",
+    "status": "em_andamento"
+}
+```
 
 ### 3.7 Interface e Navegação (Semana 07)
 
