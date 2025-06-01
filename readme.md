@@ -182,12 +182,6 @@ Para executar os testes:
 npm test
 ```
 
-# Inteli Planner - Sistema de Gerenciamento de Tarefas
-
-## Descrição
-
-Sistema de gerenciamento de tarefas desenvolvido para auxiliar alunos do **Inteli** na organização de suas atividades acadêmicas, pessoais e extracurriculares.  
-O sistema permite **criar, editar, listar e excluir tarefas**, além de categorizá-las e associá-las a usuários.
 
 - **Arquitetura**: MVC (Model-View-Controller)  
 - **Ferramenta de Diagramação**: Draw.io
