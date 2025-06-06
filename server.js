@@ -38,6 +38,10 @@ app.get('/index', (req, res) => {
   res.render('pages/index');
 });
 
+app.get('/reminders', (req, res) => {
+  res.render('pages/reminders');
+});
+
 
 // Usando as rotas definidas
 app.use('/api', routes);
