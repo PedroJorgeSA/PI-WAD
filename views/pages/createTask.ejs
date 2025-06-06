@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Tarefa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 260px;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 0;
+            justify-content: center;
+        }
+        .sidebar .nav {
+            width: 100%;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+        }
+        .sidebar .nav-link {
+            color: #fff;
+            font-size: 1.25rem;
+            padding: 18px 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: background 0.2s;
+            width: 100%;
+            justify-content: flex-start;
+            text-align: left;
+        }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover {
+            background: #222;
+            color: #fff;
+        }
+        .sidebar img {
+            height: 28px;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100vw;
+                flex-direction: row;
+                min-height: unset;
+                height: 70px;
+                padding: 0;
+            }
+            .sidebar .nav {
+                flex-direction: row;
+                width: 100vw;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            .sidebar .nav-link {
+                font-size: 1rem;
+                padding: 8px 8px;
+                margin-bottom: 0;
+                border-radius: 0;
+                width: 100%;
+                justify-content: flex-start;
+                text-align: left;
+            }
+        }
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            border: 3px solid #000;
+        }
+        .card-title {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background: #e600ff;
+            border: 3px solid #000;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 12px;
+            box-shadow: 2px 2px 0 #000;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover {
+            background: #b300cc;
+        }
+        .form-label {
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <nav class="nav flex-column">
+            <a class="nav-link" href="/page1">
+                <img src="/assets/TaskICON.png" alt="Minhas Tarefas">
+                Minhas Tarefas
+            </a>
+            <a class="nav-link" href="#">
+                <img src="/assets/NotificationICON.png" alt="Meus Lembretes">
+                Meus Lembretes
+            </a>
+            <a class="nav-link" href="#">
+                <img src="/assets/todoICON.png" alt="Todas as Tarefas">
+                Todas as Tarefas
+            </a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <div class="container" style="max-width: 500px;">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Criar Nova Tarefa</h5>
+                    <form id="nova-tarefa-form">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descricao" class="form-label">Descrição</label>
+                            <textarea class="form-control" id="descricao" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Criar Tarefa</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('nova-tarefa-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('nome').value;
+            const description = document.getElementById('descricao').value;
+            try {
+                const response = await fetch('/api/tarefas', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ nome: title, descricao: description })
+                });
+                if (response.ok) {
+                    alert('Tarefa criada com sucesso!');
+                    document.getElementById('nome').value = '';
+                    document.getElementById('descricao').value = '';
+                } else {
+                    const error = await response.json();
+                    alert(error.error || 'Erro ao criar tarefa');
+                }
+            } catch (error) {
+                alert('Erro ao criar tarefa');
+            }
+        });
+    </script>
+</body>
+</html> 

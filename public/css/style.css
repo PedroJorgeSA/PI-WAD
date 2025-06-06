@@ -1,0 +1,196 @@
+/* Reset básico para remover estilos padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #fff;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 0;
+    justify-content: center;
+}
+.sidebar .nav {
+    width: 100%;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+.sidebar .nav-link {
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: background 0.2s;
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+}
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+    background: #222;
+    color: #fff;
+}
+.sidebar img {
+    height: 28px;
+}
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100vw;
+        flex-direction: row;
+        min-height: unset;
+        height: 70px;
+        padding: 0;
+    }
+    .sidebar .nav {
+        flex-direction: row;
+        width: 100vw;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .sidebar .nav-link {
+        font-size: 1rem;
+        padding: 8px 8px;
+        margin-bottom: 0;
+        border-radius: 0;
+        width: 100%;
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+    background: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.card {
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    border: 3px solid #000;
+    margin-bottom: 32px;
+}
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.btn-primary {
+    background: #e600ff;
+    border: 3px solid #000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 2px 2px 0 #000;
+    transition: background 0.2s;
+}
+.btn-primary:hover {
+    background: #b300cc;
+}
+.form-label {
+    font-size: 1.1rem;
+}
+.list-group-item {
+    border: 2px solid #e600ff;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+.list-group-item h6 {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+.list-group-item .btn {
+    margin-right: 8px;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 16px 4px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .card-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Estilo para o cabeçalho */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Estilo para a navegação dentro do cabeçalho */
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para o conteúdo principal */
+main {
+    padding: 20px;
+}
+
+/* Estilo para o rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+  

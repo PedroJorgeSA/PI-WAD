@@ -30,6 +30,13 @@ app.get('/login', (req, res) => {
   res.render('pages/login');
 });
 
+app.get('/createTask', (req, res) => {
+  res.render('pages/createTask');
+});
+
+app.get('/index', (req, res) => {
+  res.render('pages/index');
+});
 
 
 // Usando as rotas definidas
