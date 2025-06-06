@@ -279,7 +279,7 @@ A tela final tem um proposito de criar um fluxo de navegação fluido e intuitiv
 
 **Página principal (index.ejs):** Lista todas as tarefas do usuário, exibindo informações como título, descrição, status e categoria. Permite visualizar, editar, excluir e marcar tarefas como concluídas. Os dados são carregados dinamicamente do banco de dados do supabase.
 
-<img src="/Assets/indexpPeview.png" alt="Preview Index" style="max-width:400px; display:block; margin-bottom:16px;"/>
+<img src="/Assets/indexPeview.png" alt="Preview Index" style="max-width:400px; display:block; margin-bottom:16px;"/>
 
 **Página de formulário (createTask.ejs):** Utilizada para cadastrar uma nova tarefa ou editar uma existente. O formulário inclui campos para nome, descrição e seleção de categoria. Ao salvar, os dados são enviados ao backend, que os armazena no banco de dados.
 
