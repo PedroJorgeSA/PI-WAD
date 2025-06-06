@@ -275,12 +275,10 @@ A tela final tem um proposito de criar um fluxo de navegação fluido e intuitiv
 
 ### 3.7 Interface e Navegação 
 
- A navegação e as views foram estruturadas para proporcionar uma experiência fluida e intuitiva ao usuário.
-
 #### Páginas principais
 
-**Página principal:** Lista todas as tarefas do usuário, exibindo informações como título, descrição, status e categoria. Permite visualizar, editar, excluir e marcar tarefas como concluídas. Os dados são carregados dinamicamente do banco de dados do supabase.
-**Página de formulário:** Utilizada para cadastrar uma nova tarefa ou editar uma existente. O formulário inclui campos para nome, descrição e seleção de categoria. Ao salvar, os dados são enviados ao backend, que os armazena no banco de dados.
+**Página principal(index.ejs):** Lista todas as tarefas do usuário, exibindo informações como título, descrição, status e categoria. Permite visualizar, editar, excluir e marcar tarefas como concluídas. Os dados são carregados dinamicamente do banco de dados do supabase.
+**Página de formulário(createTask.ejs):** Utilizada para cadastrar uma nova tarefa ou editar uma existente. O formulário inclui campos para nome, descrição e seleção de categoria. Ao salvar, os dados são enviados ao backend, que os armazena no banco de dados.
 **Página de lembretes (reminders.ejs):** Exibe lembretes cadastrados pelo usuário, organizados por data e tarefa associada.
 **Página de todas as tarefas (alltaks.ejs)** Mostra todas as tarefas do usuário em formato de kanban, separadas por status (A Fazer, Fazendo, Feito), com dados vindos do banco.
 
@@ -322,6 +320,141 @@ app.get('/tarefas/:id', async (req, res) => {
 Dessa forma, todas as informações exibidas nas páginas vêm diretamente do banco de dados, garantindo que o usuário sempre visualize dados atualizados e consistentes, conforme o padrão MVC dita.
 
 ---
+
+### Integração Frontend com Backend via Fetch API
+
+Para tornar a interface do Inteli Planner interativa, os botões de adicionar, editar e remover tarefas utilizam a Fetch API para se comunicar com o backend. Isso permite atualizar a tela dinamicamente, sem recarregar a página.
+
+#### 1. Buscar dados do servidor (GET)
+
+Quando a página carrega, ele pode buscar no banco de dados as tarefas por meio do fetch e do /api/tarefas.
+
+```js
+fetch('/api/tarefas')
+  .then(res => res.json())
+  .then(tarefas => {
+    tarefas.forEach(tarefa => {
+      // Crie elementos HTML para cada tarefa e adicione na tela
+    });
+  });
+```
+
+#### 2. Adicionar uma nova tarefa (POST)
+
+Ao submeter um formulário de nova tarefa, ele envia os dados para o backend:
+
+```js
+fetch('/api/tarefas', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    nome: 'Nova tarefa',
+    descricao: 'Descrição da tarefa',
+    category_id: 1 // exemplo de categoria
+  })
+})
+.then(res => res.json())
+.then(tarefaCriada => {
+  // Atualize a interface para mostrar a nova tarefa
+});
+```
+
+#### 3. Editar uma tarefa existente (PUT)
+
+Para editar uma tarefa, envie os dados atualizados para o backend:
+
+```js
+fetch(`/api/tarefas/${idDaTarefa}`, {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    nome: 'Tarefa editada',
+    descricao: 'Nova descrição',
+    status: 'concluida'
+  })
+})
+.then(res => res.json())
+.then(tarefaAtualizada => {
+  // Atualize a interface para refletir as mudanças
+});
+```
+
+#### 4. Remover uma tarefa (DELETE)
+
+Para remover uma tarefa, faça uma requisição DELETE:
+
+```js
+fetch(`/api/tarefas/${idDaTarefa}`, {
+  method: 'DELETE'
+})
+.then(res => res.json())
+.then(resposta => {
+  // Remova a tarefa da interface
+});
+```
+
+- O usuário pode usar `fetch()` para buscar, adicionar, editar e remover tarefas.
+- O site atualiza a interface dinamicamente após cada operação.
+
+### Estilização com CSS
+
+A interface do Inteli Planner utiliza CSS de forma interna, dentro dos codigos ejs e de forma externa referenciando ao arquivo style.vss
+
+- **Organização visual:**
+  Uso de grids e espaçamentos para separar seções e facilitar a leitura.
+  Exemplo:
+    ```css
+    .container {
+      display: grid;
+      gap: 24px;
+      padding: 32px;
+    }
+    .card {
+      margin-bottom: 16px;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    ```
+
+- **Cores, espaçamentos e fontes:**
+  Paleta vibrante (roxo, laranja, azul) para destacar ações e categorias.
+  Fonte Inter para títulos e textos.
+  Exemplo de utilização:
+    ```css
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #222;
+    }
+    .btn-primary {
+      background: #E300F8;
+      color: #fff;
+      border: none;
+    }
+    .categoria-academica { color: #F84E00; }
+    .categoria-extra { color: #009DF8; }
+    .categoria-pessoal { color: #222; }
+    ```
+
+- **Feedback visual em botões e formulários:**
+  Botões mudam de cor ao passar o mouse, utilizando a função hoover.
+  Campos de formulário realçam no foco e exibem mensagens de erro.
+  Exemplo:
+    ```css
+    .btn-primary:hover {
+      background: #b300cc;
+      box-shadow: 0 2px 8px #e300f855;
+    }
+    input:focus, textarea:focus {
+      border-color: #E300F8;
+      outline: none;
+    }
+    .form-error {
+      color: #F84E00;
+      font-size: 0.95em;
+      margin-top: 4px;
+    }
+    ```
 
 ## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
 
