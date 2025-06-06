@@ -42,6 +42,11 @@ app.get('/reminders', (req, res) => {
   res.render('pages/reminders');
 });
 
+app.get('/allTasks', (req, res) => {
+  res.render('pages/allTasks');
+});
+
+
 
 // Usando as rotas definidas
 app.use('/api', routes);

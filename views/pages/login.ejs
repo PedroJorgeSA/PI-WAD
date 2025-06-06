@@ -99,7 +99,13 @@
         }
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            window.location.href = '/';
+            const email = document.getElementById('email').value.trim();
+            const senha = document.getElementById('senha').value.trim();
+            if (email === 'teste@gmail.com' && senha === '123456') {
+                window.location.href = '/index';
+            } else {
+                alert('Email ou senha inválidos!');
+            }
         });
     </script>
 </body>

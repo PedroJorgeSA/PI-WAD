@@ -10,7 +10,7 @@
 <body>
     <div class="sidebar">
         <nav class="nav flex-column">
-            <a class="nav-link active" href="/page1">
+            <a class="nav-link" href="/allTasks">
                 <img src="/assets/TaskICON.png" alt="Minhas Tarefas">
                 Minhas Tarefas
             </a>
@@ -18,174 +18,94 @@
                 <img src="/assets/NotificationICON.png" alt="Meus Lembretes">
                 Meus Lembretes
             </a>
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/allTasks">
                 <img src="/assets/todoICON.png" alt="Todas as Tarefas">
                 Todas as Tarefas
             </a>
         </nav>
     </div>
     <div class="flex-grow-1">
-    <div class="container mt-4">
-        <h1>Bem-vindo ao Inteli Planner</h1>
-        <p>Gerencie suas tarefas de forma eficiente!</p>
-
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title d-flex align-items-center justify-content-between">Minhas Tarefas
-                            <a href="/createTask" style="margin-left: 12px; font-size: 1.3em; text-decoration: none;" title="Adicionar Tarefa">➕</a>
-                        </h5>
-                        <div id="tarefas-lista">
-                            Carregando tarefas...
+        <div class="container mt-4">
+            <h1 style="font-size:3rem; margin-bottom: 40px;">Minhas tarefas</h1>
+            <div class="row" id="categorias-row">
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="border: 4px solid #ff6600; border-radius: 18px;">
+                        <div class="card-header text-white" style="background: #ff6600; font-size:2rem; font-weight:bold; border-radius: 14px 14px 0 0;">Acadêmico</div>
+                        <div class="card-body" id="col-academico"></div>
+                        <div class="d-flex justify-content-center mb-3">
+                            <a href="/createTask" style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border: 3px solid #000; border-radius: 12px; font-size: 2.5rem; background: #fff; color: #000; text-decoration: none; box-shadow: 2px 2px 0 #000; margin-top: 12px;" title="Adicionar Tarefa">+</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Nova Tarefa</h5>
-                        <form id="nova-tarefa-form">
-                            <div class="mb-3">
-                                <label for="nome" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nome" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="descricao" class="form-label">Descrição</label>
-                                <textarea class="form-control" id="descricao" rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Criar Tarefa</button>
-                        </form>
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="border: 4px solid #b800ff; border-radius: 18px;">
+                        <div class="card-header text-white" style="background: #b800ff; font-size:2rem; font-weight:bold; border-radius: 14px 14px 0 0;">Pessoal</div>
+                        <div class="card-body" id="col-pessoal"></div>
+                        <div class="d-flex justify-content-center mb-3">
+                            <a href="/createTask" style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border: 3px solid #000; border-radius: 12px; font-size: 2.5rem; background: #fff; color: #000; text-decoration: none; box-shadow: 2px 2px 0 #000; margin-top: 12px;" title="Adicionar Tarefa">+</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="border: 4px solid #009cff; border-radius: 18px;">
+                        <div class="card-header text-white" style="background: #009cff; font-size:2rem; font-weight:bold; border-radius: 14px 14px 0 0;">Extra-Curriculares</div>
+                        <div class="card-body" id="col-extra"></div>
+                        <div class="d-flex justify-content-center mb-3">
+                            <a href="/createTask" style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border: 3px solid #000; border-radius: 12px; font-size: 2.5rem; background: #fff; color: #000; text-decoration: none; box-shadow: 2px 2px 0 #000; margin-top: 12px;" title="Adicionar Tarefa">+</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Função para carregar tarefas
-        async function carregarTarefas() {
+        function renderTaskItem(task) {
+            const checked = task.status === 'concluida' ? 'checked' : '';
+            return `
+                <div style="border:2px solid #b800ff; border-radius:12px; margin-bottom:18px; padding:12px 18px; background:#fff; display:flex; align-items:center;">
+                    <input type="checkbox" style="width:22px;height:22px;margin-right:12px;" ${checked} onclick="toggleStatus(${task.id}, this.checked)">
+                    <div style="flex:1;">
+                        <div style="font-weight:bold;">${task.title}</div>
+                        <div style="color:#888; font-size:1em;">Data de entrega ${task.created_at ? new Date(task.created_at).toLocaleDateString('pt-BR') : ''}</div>
+                    </div>
+                </div>
+            `;
+        }
+        async function carregarTarefasCategorias() {
             try {
                 const response = await fetch('/api/tarefas');
                 const tarefas = await response.json();
-                const listaTarefas = document.getElementById('tarefas-lista');
-                
-                if (tarefas.length === 0) {
-                    listaTarefas.innerHTML = '<p>Nenhuma tarefa encontrada.</p>';
-                    return;
-                }
-
-                listaTarefas.innerHTML = '<ul class="list-group">' + 
-                    tarefas.map(tarefa => `
-                        <li class="list-group-item">
-                            <h6>${tarefa.title}</h6>
-                            <p class="mb-0">${tarefa.description || 'Sem descrição'}</p>
-                            <small class="text-muted">Status: ${tarefa.status}</small>
-                            <div class="mt-2">
-                                <button class="btn btn-sm btn-danger" onclick="deletarTarefa(${tarefa.id})">Excluir</button>
-                                <button class="btn btn-sm btn-warning" onclick="editarTarefa(${tarefa.id})">Editar</button>
-                            </div>
-                        </li>
-                    `).join('') + 
-                    '</ul>';
+                const colAcademico = document.getElementById('col-academico');
+                const colPessoal = document.getElementById('col-pessoal');
+                const colExtra = document.getElementById('col-extra');
+                colAcademico.innerHTML = '';
+                colPessoal.innerHTML = '';
+                colExtra.innerHTML = '';
+                tarefas.forEach(task => {
+                    if (task.category_id === 1) colAcademico.innerHTML += renderTaskItem(task);
+                    else if (task.category_id === 2) colExtra.innerHTML += renderTaskItem(task);
+                    else if (task.category_id === 3) colPessoal.innerHTML += renderTaskItem(task);
+                });
             } catch (error) {
-                console.error('Erro ao carregar tarefas:', error);
-                document.getElementById('tarefas-lista').innerHTML = 
-                    '<p class="text-danger">Erro ao carregar tarefas.</p>';
+                document.getElementById('col-academico').innerHTML = '<p class="text-danger">Erro ao carregar tarefas.</p>';
+                document.getElementById('col-pessoal').innerHTML = '';
+                document.getElementById('col-extra').innerHTML = '';
             }
         }
-
-        // Função para criar nova tarefa
-        document.getElementById('nova-tarefa-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const title = document.getElementById('nome').value;
-            const description = document.getElementById('descricao').value;
-
+        async function toggleStatus(id, checked) {
+            const novoStatus = checked ? 'concluida' : 'pendente';
             try {
-                const response = await fetch('/api/tarefas', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ nome: title, descricao: description })
-                });
-
-                if (response.ok) {
-                    document.getElementById('nome').value = '';
-                    document.getElementById('descricao').value = '';
-                    carregarTarefas();
-                } else {
-                    const error = await response.json();
-                    alert(error.error || 'Erro ao criar tarefa');
-                }
-            } catch (error) {
-                console.error('Erro ao criar tarefa:', error);
-                alert('Erro ao criar tarefa');
-            }
-        });
-
-        // Função para deletar tarefa
-        async function deletarTarefa(id) {
-            if (!confirm('Tem certeza que deseja excluir esta tarefa?')) {
-                return;
-            }
-
-            try {
-                const response = await fetch(`/api/tarefas/${id}`, {
-                    method: 'DELETE'
-                });
-
-                if (response.ok) {
-                    carregarTarefas();
-                } else {
-                    const error = await response.json();
-                    alert(error.message || 'Erro ao excluir tarefa');
-                }
-            } catch (error) {
-                console.error('Erro ao excluir tarefa:', error);
-                alert('Erro ao excluir tarefa');
-            }
-        }
-
-        // Função para editar tarefa
-        async function editarTarefa(id) {
-            const novoTitulo = prompt('Digite o novo título da tarefa:');
-            if (!novoTitulo) return;
-
-            const novaDescricao = prompt('Digite a nova descrição da tarefa:');
-            const novoStatus = prompt('Digite o novo status da tarefa (pendente, em_andamento, concluida):') || 'pendente';
-
-            try {
-                const response = await fetch(`/api/tarefas/${id}`, {
+                await fetch(`/api/tarefas/${id}`, {
                     method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        nome: novoTitulo,
-                        descricao: novaDescricao,
-                        status: novoStatus
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: novoStatus })
                 });
-
-                if (response.ok) {
-                    carregarTarefas();
-                } else {
-                    const error = await response.json();
-                    alert(error.message || 'Erro ao atualizar tarefa');
-                }
+                carregarTarefasCategorias();
             } catch (error) {
-                console.error('Erro ao atualizar tarefa:', error);
-                alert('Erro ao atualizar tarefa');
+                alert('Erro ao atualizar status da tarefa');
             }
         }
-
-        // Carregar tarefas ao iniciar
-        carregarTarefas();
+        carregarTarefasCategorias();
     </script>
-    </div>
 </body>
 </html> 

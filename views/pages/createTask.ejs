@@ -124,21 +124,28 @@
         </nav>
     </div>
     <div class="main-content">
-        <div class="container" style="max-width: 500px;">
-            <div class="card mt-5">
-                <div class="card-body">
-                    <h5 class="card-title mb-4">Criar Nova Tarefa</h5>
-                    <form id="nova-tarefa-form">
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="descricao" class="form-label">Descrição</label>
-                            <textarea class="form-control" id="descricao" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Criar Tarefa</button>
-                    </form>
+        <div class="flex-grow-1">
+            <div class="container" style="max-width: 500px;">
+                <div class="mt-4 mb-3">
+                    <a href="#" onclick="history.back(); return false;" style="font-size:2rem; text-decoration:none; color:#000; display:inline-flex; align-items:center;">
+                        &#8592; <span style="font-size:1.1rem; margin-left:8px;">Voltar</span>
+                    </a>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Criar Nova Tarefa</h5>
+                        <form id="nova-tarefa-form">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label">Descrição</label>
+                                <textarea class="form-control" id="descricao" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Criar Tarefa</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
