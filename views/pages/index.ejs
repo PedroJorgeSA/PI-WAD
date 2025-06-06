@@ -71,39 +71,43 @@
                 </div>
             `;
         }
-        async function carregarTarefasCategorias() {
-            try {
-                const response = await fetch('/api/tarefas');
-                const tarefas = await response.json();
+        function carregarTarefasCategorias() {
+            fetch('/api/tarefas')
+              .then(res => res.json())
+              .then(tarefas => {
                 const colAcademico = document.getElementById('col-academico');
                 const colPessoal = document.getElementById('col-pessoal');
                 const colExtra = document.getElementById('col-extra');
                 colAcademico.innerHTML = '';
                 colPessoal.innerHTML = '';
                 colExtra.innerHTML = '';
-                tarefas.forEach(task => {
-                    if (task.category_id === 1) colAcademico.innerHTML += renderTaskItem(task);
-                    else if (task.category_id === 2) colExtra.innerHTML += renderTaskItem(task);
-                    else if (task.category_id === 3) colPessoal.innerHTML += renderTaskItem(task);
+                tarefas.forEach(tarefa => {
+                  if (tarefa.category_id === 1) colAcademico.innerHTML += renderTaskItem(tarefa);
+                  else if (tarefa.category_id === 2) colExtra.innerHTML += renderTaskItem(tarefa);
+                  else if (tarefa.category_id === 3) colPessoal.innerHTML += renderTaskItem(tarefa);
                 });
-            } catch (error) {
+              })
+              .catch(error => {
                 document.getElementById('col-academico').innerHTML = '<p class="text-danger">Erro ao carregar tarefas.</p>';
                 document.getElementById('col-pessoal').innerHTML = '';
                 document.getElementById('col-extra').innerHTML = '';
-            }
+              });
         }
-        async function toggleStatus(id, checked) {
+        function criarTarefaExemplo() {
+            fetch('/api/tarefas', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ titulo: 'Nova tarefa', descricao: 'Descrição exemplo' })
+            });
+        }
+        function toggleStatus(id, checked) {
             const novoStatus = checked ? 'concluida' : 'pendente';
-            try {
-                await fetch(`/api/tarefas/${id}`, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ status: novoStatus })
-                });
-                carregarTarefasCategorias();
-            } catch (error) {
-                alert('Erro ao atualizar status da tarefa');
-            }
+            fetch(`/api/tarefas/${id}`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ status: novoStatus })
+            }).then(() => carregarTarefasCategorias())
+              .catch(() => alert('Erro ao atualizar status da tarefa'));
         }
         carregarTarefasCategorias();
     </script>

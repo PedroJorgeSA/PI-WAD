@@ -273,9 +273,53 @@ A tela final tem um proposito de criar um fluxo de navegação fluido e intuitiv
 }
 ```
 
-### 3.7 Interface e Navegação (Semana 07)
+### 3.7 Interface e Navegação 
 
-*Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+ A navegação e as views foram estruturadas para proporcionar uma experiência fluida e intuitiva ao usuário.
+
+#### Páginas principais
+
+**Página principal:** Lista todas as tarefas do usuário, exibindo informações como título, descrição, status e categoria. Permite visualizar, editar, excluir e marcar tarefas como concluídas. Os dados são carregados dinamicamente do banco de dados do supabase.
+**Página de formulário:** Utilizada para cadastrar uma nova tarefa ou editar uma existente. O formulário inclui campos para nome, descrição e seleção de categoria. Ao salvar, os dados são enviados ao backend, que os armazena no banco de dados.
+**Página de lembretes (reminders.ejs):** Exibe lembretes cadastrados pelo usuário, organizados por data e tarefa associada.
+**Página de todas as tarefas (alltaks.ejs)** Mostra todas as tarefas do usuário em formato de kanban, separadas por status (A Fazer, Fazendo, Feito), com dados vindos do banco.
+
+#### Como funciona o fluxo de dados
+
+1. **O controller busca os dados do banco usando o modelo:**
+   - O controller (por exemplo, `TarefaController.js`) utiliza o model correspondente (por exemplo, `Task.js`) para consultar ou manipular os dados no banco de dados.
+2. **A rota chama o controller:**
+   - As rotas (em `routes/*.js`) recebem as requisições do usuário e direcionam para o método apropriado do controller.
+3. **A view é renderizada com os dados do controller:**
+   - O controller retorna os dados para a rota, que então renderiza a view EJS, passando os dados como parâmetro para exibição dinâmica.
+
+Exemplo de rota utilizando EJS:
+
+```js
+app.get('/tarefas', async (req, res) => {
+  const tarefas = await Tarefa.findAll();
+  res.render('tarefas.ejs', { tarefas });
+});
+
+// Exibir formulário para criar nova tarefa
+app.get('/tarefas/nova', (req, res) => {
+  res.render('novaTarefa.ejs');
+});
+
+//  Exibir formulário para editar uma tarefa existente
+app.get('/tarefas/:id/editar', async (req, res) => {
+  const tarefa = await Tarefa.findById(req.params.id);
+  res.render('editarTarefa.ejs', { tarefa });
+});
+
+//  Exibir detalhes de uma tarefa específica
+app.get('/tarefas/:id', async (req, res) => {
+  const tarefa = await Tarefa.findById(req.params.id);
+  res.render('detalheTarefa.ejs', { tarefa });
+});
+```
+
+Dessa forma, todas as informações exibidas nas páginas vêm diretamente do banco de dados, garantindo que o usuário sempre visualize dados atualizados e consistentes, conforme o padrão MVC dita.
 
 ---
 

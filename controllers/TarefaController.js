@@ -3,7 +3,7 @@ const Task = require('../models/Task');
 
 // Criar uma nova tarefa
 exports.criarTarefa = async (req, res) => {
-  const { nome: title, descricao: description } = req.body;
+  const { nome: title, descricao: description, category_id } = req.body;
 
   // Validação dos campos obrigatórios
   if (!title) {
@@ -11,7 +11,7 @@ exports.criarTarefa = async (req, res) => {
   }
 
   try {
-    const tarefa = await Task.create({ title, description });
+    const tarefa = await Task.create({ title, description, category_id });
     res.status(201).json(tarefa);
   } catch (err) {
     console.error('Erro ao criar tarefa:', err);

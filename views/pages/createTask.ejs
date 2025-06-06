@@ -140,6 +140,15 @@
                                 <input type="text" class="form-control" id="nome" required>
                             </div>
                             <div class="mb-3">
+                                <label for="categoria" class="form-label">Categoria</label>
+                                <select class="form-control" id="categoria" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="1">Acadêmico</option>
+                                    <option value="2">Extra-Curricular</option>
+                                    <option value="3">Pessoal</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="descricao" class="form-label">Descrição</label>
                                 <textarea class="form-control" id="descricao" rows="3"></textarea>
                             </div>
@@ -155,18 +164,20 @@
             e.preventDefault();
             const title = document.getElementById('nome').value;
             const description = document.getElementById('descricao').value;
+            const category_id = parseInt(document.getElementById('categoria').value);
             try {
                 const response = await fetch('/api/tarefas', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ nome: title, descricao: description })
+                    body: JSON.stringify({ nome: title, descricao: description, category_id })
                 });
                 if (response.ok) {
                     alert('Tarefa criada com sucesso!');
                     document.getElementById('nome').value = '';
                     document.getElementById('descricao').value = '';
+                    document.getElementById('categoria').value = '';
                 } else {
                     const error = await response.json();
                     alert(error.error || 'Erro ao criar tarefa');
