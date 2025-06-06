@@ -277,10 +277,21 @@ A tela final tem um proposito de criar um fluxo de navegação fluido e intuitiv
 
 #### Páginas principais
 
-**Página principal(index.ejs):** Lista todas as tarefas do usuário, exibindo informações como título, descrição, status e categoria. Permite visualizar, editar, excluir e marcar tarefas como concluídas. Os dados são carregados dinamicamente do banco de dados do supabase.
-**Página de formulário(createTask.ejs):** Utilizada para cadastrar uma nova tarefa ou editar uma existente. O formulário inclui campos para nome, descrição e seleção de categoria. Ao salvar, os dados são enviados ao backend, que os armazena no banco de dados.
+**Página principal (index.ejs):** Lista todas as tarefas do usuário, exibindo informações como título, descrição, status e categoria. Permite visualizar, editar, excluir e marcar tarefas como concluídas. Os dados são carregados dinamicamente do banco de dados do supabase.
+
+<img src="/Assets/indexpreview.png" alt="Preview Index" style="max-width:400px; display:block; margin-bottom:16px;"/>
+
+**Página de formulário (createTask.ejs):** Utilizada para cadastrar uma nova tarefa ou editar uma existente. O formulário inclui campos para nome, descrição e seleção de categoria. Ao salvar, os dados são enviados ao backend, que os armazena no banco de dados.
+
+<img src="/Assets/loginpreview.png" alt="Preview Login" style="max-width:400px; display:block; margin-bottom:16px;"/>
+
 **Página de lembretes (reminders.ejs):** Exibe lembretes cadastrados pelo usuário, organizados por data e tarefa associada.
-**Página de todas as tarefas (alltaks.ejs)** Mostra todas as tarefas do usuário em formato de kanban, separadas por status (A Fazer, Fazendo, Feito), com dados vindos do banco.
+
+<img src="/Assets/reminderspreview.png" alt="Preview Reminders" style="max-width:400px; display:block; margin-bottom:16px;"/>
+
+**Página de todas as tarefas (alltaks.ejs):** Mostra todas as tarefas do usuário em formato de kanban, separadas por status (A Fazer, Fazendo, Feito), com dados vindos do banco.
+
+<img src="/Assets/alltaskspreview.png" alt="Preview All Tasks" style="max-width:400px; display:block; margin-bottom:16px;"/>
 
 #### Como funciona o fluxo de dados
 
