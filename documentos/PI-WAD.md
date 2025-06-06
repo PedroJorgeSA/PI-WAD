@@ -287,11 +287,11 @@ A tela final tem um proposito de criar um fluxo de navegação fluido e intuitiv
 
 **Página de lembretes (reminders.ejs):** Exibe lembretes cadastrados pelo usuário, organizados por data e tarefa associada.
 
-<img src="/Assets/reminderspreview.png" alt="Preview Reminders" style="max-width:400px; display:block; margin-bottom:16px;"/>
+<img src="/Assets/remindersPreview.png" alt="Preview Reminders" style="max-width:400px; display:block; margin-bottom:16px;"/>
 
 **Página de todas as tarefas (alltaks.ejs):** Mostra todas as tarefas do usuário em formato de kanban, separadas por status (A Fazer, Fazendo, Feito), com dados vindos do banco.
 
-<img src="/Assets/alltaskspreview.png" alt="Preview All Tasks" style="max-width:400px; display:block; margin-bottom:16px;"/>
+<img src="/Assets/alltasksPreview.png" alt="Preview All Tasks" style="max-width:400px; display:block; margin-bottom:16px;"/>
 
 #### Como funciona o fluxo de dados
 
