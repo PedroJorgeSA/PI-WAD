@@ -61,51 +61,6 @@ PI-WAD/
 - Node.js (versão X.X.X)
 - PostgreSQL (versão X.X.X)
 
-## Estrutura do projeto
-
-```sql
-PI-WAD/
-│
-├── Assets/                # Arquivos visuais e imagens auxiliares (ex: diagramas, personas)
-│   ├── diagramaLogico.png
-│   └── personaGeorge.png
-│
-├── config/                # Arquivos de configuração do sistema
-│   └── db.js              # Configuração da conexão com o banco de dados
-│
-├── controllers/           # Lógica de controle das requisições (camada Controller)
-│   └── userController.js
-│
-├── documentos/            # Documentação e arquivos de banco
-│   ├── PI-WAD.md          # Documento principal do projeto
-│   └── modeloFisico.sql   # Script SQL com modelo físico do banco de dados
-│
-├── models/                # Definição dos modelos de dados (camada Model)
-│   └── userModel.js
-│
-├── routes/                # Definição das rotas do sistema
-│   ├── frontRoutes.js     # Rotas voltadas ao frontend (se aplicável)
-│   └── userRoutes.js      # Rotas relacionadas aos usuários
-│
-├── scripts/               # Scripts de inicialização e execução auxiliar
-│   ├── init.sql
-│   └── runSQLScript.js
-│
-├── services/              # Regras de negócio e serviços auxiliares
-│   └── userService.js
-│
-├── tests/                 # Testes automatizados (unitários e de integração)
-│   ├── userController.test.js
-│   ├── userModel.test.js
-│   ├── userRoutes.test.js
-│   └── userService.test.js
-│
-├── views/                 # (Reservado para templates ou frontend, se necessário)
-│
-├── jest.config.js         # Configuração de testes com Jest
-├── package.json           # Dependências e scripts do Node.js
-├── package-lock.json      # Lockfile do npm
-```
 
 ## Instalação
 
@@ -227,12 +182,6 @@ Para executar os testes:
 npm test
 ```
 
-# Inteli Planner - Sistema de Gerenciamento de Tarefas
-
-## Descrição
-
-Sistema de gerenciamento de tarefas desenvolvido para auxiliar alunos do **Inteli** na organização de suas atividades acadêmicas, pessoais e extracurriculares.  
-O sistema permite **criar, editar, listar e excluir tarefas**, além de categorizá-las e associá-las a usuários.
 
 - **Arquitetura**: MVC (Model-View-Controller)  
 - **Ferramenta de Diagramação**: Draw.io
