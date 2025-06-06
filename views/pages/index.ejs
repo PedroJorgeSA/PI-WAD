@@ -5,14 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inteli Planner</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 260px;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 0;
+        }
+        .sidebar .logo {
+            width: 100%;
+            padding: 32px 0 24px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .sidebar .nav {
+            width: 100%;
+            padding-left: 0;
+        }
+        .sidebar .nav-link {
+            color: #fff;
+            font-size: 1.25rem;
+            padding: 18px 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: background 0.2s;
+        }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover {
+            background: #222;
+            color: #fff;
+        }
+        .sidebar img {
+            height: 28px;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100vw;
+                flex-direction: row;
+                min-height: unset;
+                height: 70px;
+                padding: 0;
+            }
+            .sidebar .logo {
+                display: none;
+            }
+            .sidebar .nav {
+                flex-direction: row;
+                width: 100vw;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            .sidebar .nav-link {
+                font-size: 1rem;
+                padding: 8px 8px;
+                margin-bottom: 0;
+                border-radius: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/">Inteli Planner</a>
-        </div>
-    </nav>
-
+    <div class="sidebar">
+        <nav class="nav flex-column">
+            <a class="nav-link active" href="/page1">
+                <img src="/assets/TaskICON.png" alt="Minhas Tarefas">
+                Minhas Tarefas
+            </a>
+            <a class="nav-link" href="#">
+                <img src="/assets/NotificationICON.png" alt="Meus Lembretes">
+                Meus Lembretes
+            </a>
+            <a class="nav-link" href="#">
+                <img src="/assets/todoICON.png" alt="Todas as Tarefas">
+                Todas as Tarefas
+            </a>
+        </nav>
+    </div>
+    <div class="flex-grow-1">
     <div class="container mt-4">
         <h1>Bem-vindo ao Inteli Planner</h1>
         <p>Gerencie suas tarefas de forma eficiente!</p>
@@ -173,5 +254,6 @@
         // Carregar tarefas ao iniciar
         carregarTarefas();
     </script>
+    </div>
 </body>
 </html> 

@@ -19,8 +19,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rota principal
 app.get('/', (req, res) => {
-  res.render('pages/index');
+  res.render('pages/login');
 });
+
+app.get('/page1', (req, res) => {
+  res.render('pages/page1');
+});
+
+app.get('/login', (req, res) => {
+  res.render('pages/login');
+});
+
+
 
 // Usando as rotas definidas
 app.use('/api', routes);

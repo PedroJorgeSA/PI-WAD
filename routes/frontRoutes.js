@@ -17,6 +17,13 @@ router.get('/about', (req, res) => {
   });
 });
 
+router.get('/page1', (req, res) => {
+  res.render(path.join(__dirname, '../views/layout/main'), {
+    pageTitle: 'Minhas Tarefas',
+    content: path.join(__dirname, '../views/pages/page1')
+  });
+});
+
 // Adicione outras rotas conforme necessário
 
 module.exports = router;
