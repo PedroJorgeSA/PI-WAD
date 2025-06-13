@@ -467,23 +467,195 @@ A interface do Inteli Planner utiliza CSS de forma interna, dentro dos codigos e
     }
     ```
 
-## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
+## <a name="c4"></a>4. Desenvolvimento da Aplicação Web
 
-### 4.1 Demonstração do Sistema Web (Semana 8)
+### 4.1 Funcionalidades Entregues
 
-*VIDEO: Insira o link do vídeo demonstrativo nesta seção*
-*Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+Apresentação do projeto Inteli Planner, demonstrando as principais funcionalidades e arquitetura de forma introdutória: [acesse o video da apresentação no google drive:](https://drive.google.com/file/d/15EGvIKQJ742Y1wKsb7A_-23fC0ppQ8om/view?usp=sharing)
 
-### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
+#### 4.1.1 Estrutura Técnica do Projeto
+O projeto foi desenvolvido seguindo o padrão de arquitetura MVC (Model-View-Controller), utilizando as seguintes tecnologias principais:
 
-*Indique pontos fortes e pontos a melhorar de maneira geral.*
-*Relacione também quaisquer outras ideias que você tenha para melhorias futuras.*
+- **Backend**:
+  - Node.js como runtime
+  - Express.js como framework web
+  - PostgreSQL como banco de dados
+  - EJS como engine de templates
 
+- **Frontend**:
+  - HTML5, CSS3 e JavaScript
+  - Fetch API para comunicação com o backend
+  - Bootstrap para estilização
+  - EJS para renderização dinâmica
 
+#### 4.1.2 Back-end e Front-end
 
-## <a name="c5"></a>5. Referências
+**Backend**:
+O backend foi estruturado em camadas bem definidas:
 
-_Incluir as principais referências de seu projeto, para que seu parceiro possa consultar caso ele se interessar em aprofundar. Um exemplo de referência de livro e de site:_<br>
+1. **Models**:
+```javascript
+// models/Task.js
+class Task {
+    static async findAll() {
+        const query = 'SELECT * FROM tasks ORDER BY id DESC';
+        try {
+            const result = await db.query(query);
+            return result.rows;
+        } catch (error) {
+            throw new Error(`Erro ao buscar tarefas: ${error.message}`);
+        }
+    }
+}
+```
 
----
----
+2. **Controllers**:
+```javascript
+// controllers/TarefaController.js
+exports.criarTarefa = async (req, res) => {
+  const { nome: title, descricao: description, category_id } = req.body;
+  try {
+    const tarefa = await Task.create({ title, description, category_id });
+    res.status(201).json(tarefa);
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao criar tarefa' });
+  }
+};
+```
+
+3. **Routes**:
+```javascript
+// routes/userRoutes.js
+router.get('/:id', userController.getUserById);
+```
+
+**Frontend**:
+O frontend implementa uma interface interativa usando Fetch API:
+
+```javascript
+// views/pages/allTasks.ejs
+async function carregarTarefasKanban() {
+    try {
+        const response = await fetch('/api/tarefas');
+        const tarefas = await response.json();
+        // Manipulação das tarefas por status
+    } catch (error) {
+        // Tratamento de erro
+    }
+}
+```
+
+#### 4.1.3 Código Entregue
+
+O projeto foi entregue com uma estrutura completa e organizada:
+
+```
+├── controllers/     # Controladores da aplicação
+├── models/         # Modelos de dados
+├── views/          # Templates EJS
+│   ├── layouts/    # Layouts base
+│   ├── partials/   # Componentes reutilizáveis
+│   └── pages/      # Páginas principais
+├── routes/         # Definição de rotas
+├── services/       # Serviços de negócio
+├── config/         # Configurações
+└── tests/          # Testes automatizados
+```
+
+#### 4.1.4 Desafios Enfrentados
+
+1. **Integração Frontend-Backend**:
+   - Desafio: Implementar comunicação assíncrona entre frontend e backend
+   - Solução: Utilização do Fetch API com tratamento adequado de promessas
+   ```javascript
+   // Exemplo de solução implementada
+   async function editarTarefa(id) {
+       try {
+           const response = await fetch(`/api/tarefas/${id}`, {
+               method: 'PUT',
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify({
+                   nome: novoTitulo,
+                   descricao: novaDescricao,
+                   status: novoStatus
+               })
+           });
+           if (response.ok) {
+               carregarTarefasKanban();
+           }
+       } catch (error) {
+           console.error('Erro ao atualizar tarefa:', error);
+       }
+   }
+   ```
+
+2. **Gerenciamento de Estado**:
+   - Desafio: Manter a interface sincronizada com o banco de dados
+   - Solução: Implementação de funções de atualização automática após cada operação
+
+3. **Tratamento de Erros**:
+   - Desafio: Garantir experiência do usuário mesmo em caso de falhas
+   - Solução: Implementação de try-catch e feedback visual para o usuário
+   ```javascript
+   try {
+       const response = await fetch('/api/tarefas');
+       const tarefas = await response.json();
+   } catch (error) {
+       document.getElementById('col-pendente').innerHTML = 
+           '<p class="text-danger">Erro ao carregar tarefas.</p>';
+   }
+   ```
+
+4. **Organização do Código**:
+   - Desafio: Manter o código organizado e manutenível
+   - Solução: Adoção do padrão MVC e separação clara de responsabilidades
+
+5. **Performance**:
+   - Desafio: Garantir carregamento rápido e eficiente
+   - Solução: Implementação de carregamento assíncrono e otimização de queries
+
+#### 4.1.5 Preview da Aplicação
+
+![Login Preview](/Assets/loginPreview.png)
+*Tela de login da aplicação*
+
+![All Tasks Preview](/Assets/alltasksPreview.png)
+*Tela de visualização de todas as tarefas*
+
+### 4.2 Conclusões e Trabalhos Futuros
+
+O desenvolvimento do Inteli Planner proporcionou uma valiosa oportunidade de aplicar e consolidar conhecimentos em desenvolvimento web, resultando em uma aplicação funcional e bem estruturada. Durante o processo de desenvolvimento, foram alcançados vários objetivos importantes:
+
+#### Pontos Fortes
+1. **Arquitetura Robusta**: A implementação do padrão MVC resultou em um código organizado e manutenível
+2. **Interface Intuitiva**: O design NeoBrutalista proporcionou uma experiência de usuário clara e funcional
+3. **Funcionalidades Essenciais**: Todas as user stories principais foram implementadas com sucesso
+4. **Código Escalável**: A estrutura modular permite fácil expansão e manutenção
+5. **Tratamento de Erros**: Implementação robusta de tratamento de erros e feedback ao usuário
+
+#### Pontos a Melhorar
+1. **Autenticação**: Implementar um sistema de autenticação mais robusto
+2. **Testes**: Aumentar a cobertura de testes automatizados
+3. **Responsividade**: Melhorar a adaptação em diferentes dispositivos
+4. **Performance**: Otimizar consultas ao banco de dados
+5. **Documentação**: Expandir a documentação técnica do código
+
+#### Trabalhos Futuros
+1. **Sistema de Notificações**: Implementar notificações em tempo real
+2. **Integração com Calendário**: Adicionar sincronização com Google Calendar
+3. **Modo Offline**: Desenvolver funcionalidades para uso offline
+4. **Análise de Dados**: Adicionar dashboards com métricas de produtividade
+5. **API Pública**: Desenvolver uma API pública para integração com outros sistemas
+
+### 5 Referências
+
+BOOTSTRAP. **Bootstrap**. 2023. Disponível em: <https://getbootstrap.com/>. Acesso em: 15 mar. 2024.
+
+MDN WEB DOCS. **Fetch API**. 2023. Disponível em: <https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API>. Acesso em: 15 mar. 2024.
+
+INTELI. **Instituto de Tecnologia e Liderança**. 2023. Disponível em: <https://www.inteli.edu.br/>. Acesso em: 15 mar. 2024.
+
+FIGMA. **Figma: the collaborative interface design tool**. 2023. Disponível em: <https://www.figma.com/>. Acesso em: 15 mar. 2024.
+
+JEST. **Jest**. 2023. Disponível em: <https://jestjs.io/>. Acesso em: 15 mar. 2024.
+

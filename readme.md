@@ -2,6 +2,18 @@
 
 Este é um sistema de gerenciamento de tarefas desenvolvido com Node.js, Express e PostgreSQL, seguindo a arquitetura MVC.
 
+## 📸 Screenshots
+
+### Login
+![Login Preview](/Assets/loginPreview.png)
+
+### Visualização de Tarefas
+![All Tasks Preview](/Assets/alltasksPreview.png)
+
+## 🎥 Demonstração
+
+[Assista ao vídeo de demonstração](https://drive.google.com/file/d/15EGvIKQJ742Y1wKsb7A_-23fC0ppQ8om/view?usp=sharing)
+
 ## Estrutura do Projeto
 
 ```
